@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code
+namespace Code.Gameplay.Logic
 {
     public class PlayerInputX : MonoBehaviour
     {
