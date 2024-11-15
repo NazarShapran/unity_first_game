@@ -439,8 +439,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1255049542}
   - component: {fileID: 1255049541}
-  m_Layer: 0
-  m_Name: EnemiesSpawner
+  m_Layer: 7
+  m_Name: CollectablesSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -689,6 +689,8 @@ GameObject:
   - component: {fileID: 1906662390}
   - component: {fileID: 1906662391}
   - component: {fileID: 1906662392}
+  - component: {fileID: 1906662393}
+  - component: {fileID: 1906662394}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -900,6 +902,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 1906662391}
   _moverX: {fileID: 1906662388}
+--- !u!114 &1906662393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906662383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74303952cb5e4015800c786324b12284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1906662394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906662383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13ec07c587fd4a9cb4fe7579b42ec6b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2010153331
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1111,6 +1137,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 631298169}
     m_Modifications:
+    - target: {fileID: -8370359537365378593, guid: 5f746bb0e5c1b7647b9c6c48354321eb, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6532556080380276872, guid: 5f746bb0e5c1b7647b9c6c48354321eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.58
