@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.Gameplay.Logic
 {
@@ -7,6 +8,15 @@ namespace Code.Gameplay.Logic
     {
         [SerializeField]
         private float _currentHealth;
+
+        public float MaxHealth { get; private set; }
+
+        public float CurrentHealth => _currentHealth;
+
+        private void Start()
+        {
+            MaxHealth = _currentHealth;
+        }
 
         public void Subtract(float healthToSubtract)
         {
