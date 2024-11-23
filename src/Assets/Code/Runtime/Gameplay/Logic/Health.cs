@@ -12,6 +12,9 @@ namespace Code.Runtime.Gameplay.Logic
 
         public float CurrentHealth => _currentHealth;
 
+        public event Action Changed;
+        public event Action Death; 
+
         private void Start()
         {
             MaxHealth = _currentHealth;
@@ -25,9 +28,12 @@ namespace Code.Runtime.Gameplay.Logic
             }
             _currentHealth -= healthToSubtract;
 
+            Changed?.Invoke();
+
             if (_currentHealth <= 0)
             {
                 _currentHealth = 0;
+                Death?.Invoke();
             }
         }
     }

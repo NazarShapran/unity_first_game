@@ -175,4 +175,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c022990a6694bca8f22f56dfd7ff633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthToSubstract: 10
+  _healthToSubstract: 50
