@@ -23,9 +23,21 @@ namespace Code.Runtime.infrastructure.GameStates.StateMachine
             Debug.Log($"GameStateMachine Enter: {state.GetType().Name}");
             state.Enter();
         }
+        
+        public void Enter<TState, TPayload>(TPayload payload) where TState 
+            : class, IPayloadedEnterableState<TPayload>
+        {
+            IPayloadedEnterableState<TPayload> state = GetState<TState>();
+            if (_activeState is IExitableState activeState )
+            {
+                activeState?.Exit();
+            }
+            Debug.Log($"GameStateMachine Enter: {state.GetType().Name}");
+            state.Enter(payload);
+        }
 
         private TState GetState<TState>()
-            where TState : class, IEnterableState =>
+            where TState : class, IState =>
             _stateProvider.GetState<TState>();
         
     }

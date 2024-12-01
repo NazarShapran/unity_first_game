@@ -1,11 +1,12 @@
-﻿using Code.Runtime.infrastructure.GameStates;
-using Code.Runtime.infrastructure.GameStates.Api;
+﻿using Code.Runtime.infrastructure.GameStates.Api;
 using Code.Runtime.infrastructure.GameStates.Provider;
 using Code.Runtime.infrastructure.GameStates.StateMachine;
 using Code.Runtime.infrastructure.GameStates.States;
+using Code.Runtime.infrastructure.Service.Factories;
 using Code.Runtime.infrastructure.Service.Input;
 using Code.Runtime.infrastructure.Service.Random;
 using Code.Runtime.infrastructure.Service.Scene;
+using Code.Runtime.infrastructure.Service.StaticData;
 using Zenject;
 
 namespace Code.Runtime.infrastructure
@@ -16,7 +17,13 @@ namespace Code.Runtime.infrastructure
         {
             BindInfrastructureServices();
             BindGameStates();
+            BindGameFactories();
             Container.BindInterfacesAndSelfTo<ProjectInstaller>().FromInstance(this).AsSingle();
+        }
+
+        private void BindGameFactories()
+        {
+            Container.Bind<IGameFactory>().To<GameFactory>().AsSingle();
         }
 
         private void BindGameStates()
@@ -24,6 +31,8 @@ namespace Code.Runtime.infrastructure
             Container.Bind<IStateProvider>().To<StateProvider>().AsSingle();
             Container.Bind<IGameStateMachine>().To<GameStateMachine>().AsSingle();
             Container.BindInterfacesAndSelfTo<BootstrapState>().AsSingle();
+            Container.BindInterfacesAndSelfTo<LoadLevelState>().AsSingle();
+            Container.BindInterfacesAndSelfTo<MenuState>().AsSingle();
             Container.BindInterfacesAndSelfTo<LevelState>().AsSingle();
         }
 
@@ -32,6 +41,7 @@ namespace Code.Runtime.infrastructure
             Container.Bind<IRandomInterface>().To<RandomService>().AsSingle();
             Container.Bind<ISceneLoader>().To<SceneLoader>().AsSingle();
             Container.Bind<IInputService>().To<InputService>().AsSingle();
+            Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
         }
 
         public void Initialize()

@@ -12,7 +12,7 @@ namespace Code.Runtime.infrastructure.GameStates.Provider
             _container = container;
         }
         
-        public TState GetState<TState>() where TState : class, IEnterableState =>
+        public TState GetState<TState>() where TState : class, IState =>
             _container.Resolve<TState>();
     }
 }
