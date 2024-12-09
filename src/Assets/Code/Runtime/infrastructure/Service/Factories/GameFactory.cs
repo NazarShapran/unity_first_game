@@ -1,4 +1,5 @@
 ﻿using Code.Runtime.Gameplay.Logic;
+using Code.Runtime.Gameplay.Services.Wallet;
 using Code.Runtime.Gameplay.View.UI;
 using Code.Runtime.infrastructure.Service.StaticData;
 using UnityEngine;
@@ -26,10 +27,9 @@ namespace Code.Runtime.infrastructure.Service.Factories
 
         public GameObject CreateHud(GameObject player)
         {
-            Wallet wallet = player.GetComponent<Wallet>();
             Health health = player.GetComponent<Health>();
             Hud hud = _instantiator.InstantiatePrefabForComponent<Hud>(_staticDataService.HUDConfig.HudPrefab);
-            hud.Setup(wallet, health);
+            hud.Setup(health);
             return hud.gameObject;
         }
     }

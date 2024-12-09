@@ -20,12 +20,14 @@ namespace Code.Runtime.Gameplay.Logic
         private float _randomDetailX = 2;
 
         private IRandomInterface _random;
+        private IInstantiator _instantiator;
 
         public float RandomDetailX => _randomDetailX;
 
         [Inject]
-        private void Construct(IRandomInterface random)
+        private void Construct(IRandomInterface random, IInstantiator instantiator)
         {
+            _instantiator = instantiator;
             _random = random;
         }
 
@@ -39,7 +41,7 @@ namespace Code.Runtime.Gameplay.Logic
         }
         private void SpawnEnemy()
         {
-            Instantiate(_collectable, transform.position.SetX(GetRandomX()), quaternion.identity, gameObject.transform);
+            _instantiator.InstantiatePrefab(_collectable, transform.position.SetX(GetRandomX()), quaternion.identity, gameObject.transform);
         }
 
         private float GetRandomX()

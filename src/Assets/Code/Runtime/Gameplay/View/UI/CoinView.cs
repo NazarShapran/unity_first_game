@@ -1,6 +1,8 @@
 ﻿using Code.Runtime.Gameplay.Logic;
+using Code.Runtime.Gameplay.Services.Wallet;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 
 namespace Code.Runtime.Gameplay.View.UI
@@ -10,16 +12,17 @@ namespace Code.Runtime.Gameplay.View.UI
         [SerializeField]
         private TextMeshProUGUI _coinText;
 
-        private Wallet _wallet;
+        private IWalletService _walletService;
+        
+        [Inject]
+        private void Construct(IWalletService walletService)
+        {
+            _walletService = walletService;
+        }
 
         private void Update()
         {
-            _coinText.text = _wallet.Balance.ToString();
-        }
-
-        public void SetUp(Wallet wallet)
-        {
-            _wallet = wallet;
+            _coinText.text = _walletService.Balance.ToString();
         }
     }
 }

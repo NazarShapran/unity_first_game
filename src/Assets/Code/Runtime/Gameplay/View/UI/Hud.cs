@@ -1,4 +1,5 @@
 ﻿using Code.Runtime.Gameplay.Logic;
+using Code.Runtime.Gameplay.Services.Wallet;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,9 +12,8 @@ namespace Code.Runtime.Gameplay.View.UI
         [SerializeField]
         private HealthBar _healthBar;
         
-        public void Setup(Wallet wallet, Health health)
+        public void Setup( Health health)
         {
-            _coinView.SetUp(wallet);    
             _healthBar.SetUp(health);
         }
     }

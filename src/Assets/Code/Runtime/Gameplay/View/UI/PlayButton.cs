@@ -9,15 +9,15 @@ namespace Code.Runtime.Gameplay.View.UI
 {
     public class PlayButton : MonoBehaviour
     {
-        private readonly IGameStateMachine _stateMachine;
-
         [SerializeField]
         private Button _button;
+
+        private IGameStateMachine _gameStateMachine;
         
         [Inject]
-        public PlayButton(IGameStateMachine stateMachine)
+        private void Construct(IGameStateMachine gameStateMachine)
         {
-            _stateMachine = stateMachine;
+            _gameStateMachine = gameStateMachine;
         }
         private void Awake()
         {
@@ -31,7 +31,7 @@ namespace Code.Runtime.Gameplay.View.UI
 
         private void OnButtonClick()
         {
-            _stateMachine.Enter<LoadLevelState, string>("level");
+            _gameStateMachine.Enter<LoadLevelState, string>("Level");
         }
     }
 }

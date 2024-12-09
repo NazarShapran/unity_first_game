@@ -7,5 +7,6 @@ namespace Code.Runtime.infrastructure.Service.StaticData
         HudConfig HUDConfig { get; }
         PlayerConfig PlayerConfig { get; }
         void LoadAll();
+        LevelData GetLevelData(string levelName);
     }
 }
