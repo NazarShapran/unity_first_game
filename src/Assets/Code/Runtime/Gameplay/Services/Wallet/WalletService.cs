@@ -6,12 +6,23 @@ namespace Code.Runtime.Gameplay.Services.Wallet
 {
     public class WalletService : IWalletService
     {
-        [SerializeField]
-        private int _balance;
+        [SerializeField] private int _balance;
 
         public int Balance => _balance;
 
         public void AddCoin() => _balance++;
+
+        public bool IsEnoughMoney(int hatConfigPrice)
+        {
+            return _balance >= hatConfigPrice;
+        }
+
+        public void Purchase(int price)
+        {
+            if (!IsEnoughMoney(price))
+                throw new System.InvalidOperationException("Not enough money");
+            _balance -= price;
+        }
 
         public void Write(PlayerProgress playerProgress)
         {

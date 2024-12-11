@@ -10,6 +10,7 @@ using Code.Runtime.infrastructure.Service.Progress;
 using Code.Runtime.infrastructure.Service.Random;
 using Code.Runtime.infrastructure.Service.SaveLoad;
 using Code.Runtime.infrastructure.Service.Scene;
+using Code.Runtime.infrastructure.Service.Shop;
 using Code.Runtime.infrastructure.Service.StaticData;
 using Zenject;
 
@@ -29,6 +30,7 @@ namespace Code.Runtime.infrastructure
         private void BindGameplayServices()
         {
             Container.Bind<IWalletService>().To<WalletService>().AsSingle();
+            Container.Bind<IShopService>().To<ShopService>().AsSingle();
         }
 
         private void BindGameFactories()

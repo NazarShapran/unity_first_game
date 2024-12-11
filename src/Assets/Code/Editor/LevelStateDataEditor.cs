@@ -18,6 +18,7 @@ namespace Code.Editor
             if (GUILayout.Button("Collect data"))
             {
                 CollectData();
+                EditorUtility.SetDirty(target);
             }
         }
 

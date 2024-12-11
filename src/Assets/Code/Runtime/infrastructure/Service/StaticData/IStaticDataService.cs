@@ -1,4 +1,6 @@
-﻿using Code.Runtime.StaticData;
+﻿using System.Collections.Generic;
+using Code.Runtime.Data;
+using Code.Runtime.StaticData;
 
 namespace Code.Runtime.infrastructure.Service.StaticData
 {
@@ -8,5 +10,7 @@ namespace Code.Runtime.infrastructure.Service.StaticData
         PlayerConfig PlayerConfig { get; }
         void LoadAll();
         LevelData GetLevelData(string levelName);
+        HatConfig GetHatConfig(HatTypeId hatTypeId);
+        IEnumerable<HatConfig> GetHatsConfigs();
     }
 }

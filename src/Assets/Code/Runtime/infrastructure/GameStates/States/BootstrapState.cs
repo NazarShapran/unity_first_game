@@ -2,6 +2,7 @@
 using Code.Runtime.infrastructure.GameStates.Api;
 using Code.Runtime.infrastructure.SaveLoadRegistry;
 using Code.Runtime.infrastructure.Service.Scene;
+using Code.Runtime.infrastructure.Service.Shop;
 using Code.Runtime.infrastructure.Service.StaticData;
 
 namespace Code.Runtime.infrastructure.GameStates.States
@@ -16,15 +17,17 @@ namespace Code.Runtime.infrastructure.GameStates.States
         private readonly IStaticDataService _staticDataService;
         private readonly IWalletService _walletService;
         private readonly ISaveLoadRegistryService _saveLoadRegistryService;
+        private readonly IShopService _shopService;
 
         public BootstrapState(IGameStateMachine gameStateMachine, ISceneLoader sceneLoader, IStaticDataService staticDataService,
-            IWalletService walletService, ISaveLoadRegistryService saveLoadRegistryService)
+            IWalletService walletService, ISaveLoadRegistryService saveLoadRegistryService, IShopService shopService)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
             _staticDataService = staticDataService;
             _walletService = walletService;
             _saveLoadRegistryService = saveLoadRegistryService;
+            _shopService = shopService;
         }
         public void Enter()
         {
@@ -33,6 +36,8 @@ namespace Code.Runtime.infrastructure.GameStates.States
             
             _saveLoadRegistryService.RegisterAsProgressReader(_walletService);
             _saveLoadRegistryService.RegisterAsProgressWriter(_walletService);
+            _saveLoadRegistryService.RegisterAsProgressReader(_shopService);
+            _saveLoadRegistryService.RegisterAsProgressWriter(_shopService);
             
             _gameStateMachine.Enter<LoadProgressState>();
         }

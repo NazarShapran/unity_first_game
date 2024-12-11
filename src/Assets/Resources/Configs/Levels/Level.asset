@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe9b78a609f451b92f4f1f9f4ea6be7, type: 3}
   m_Name: Level
   m_EditorClassIdentifier: 
-  LevelName: 
-  PlayerSpawnPoint: {x: 0, y: 0, z: 0}
+  LevelName: Level
+  PlayerSpawnPoint: {x: -1.54, y: -2.45, z: 0}

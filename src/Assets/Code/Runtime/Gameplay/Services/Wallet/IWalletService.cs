@@ -6,5 +6,7 @@ namespace Code.Runtime.Gameplay.Services.Wallet
     {
         int Balance { get; }
         void AddCoin();
+        bool IsEnoughMoney(int hatConfigPrice);
+        void Purchase(int price);
     }
 }

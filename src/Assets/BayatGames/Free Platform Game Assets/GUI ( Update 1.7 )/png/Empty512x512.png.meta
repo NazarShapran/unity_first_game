@@ -140,7 +140,7 @@ TextureImporter:
         height: 65
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 16, y: 19, z: 11, w: 11}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -157,11 +157,11 @@ TextureImporter:
         serializedVersion: 2
         x: 243
         y: 423
-        width: 258
+        width: 257
         height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 20, y: 11, z: 13, w: 10}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -182,7 +182,7 @@ TextureImporter:
         height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 16, y: 9, z: 20, w: 10}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -224,7 +224,7 @@ TextureImporter:
         height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 16, y: 10, z: 17, w: 9}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -324,7 +324,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 161
-        y: 20
+        y: 21
         width: 65
         height: 65
       alignment: 0
@@ -341,7 +341,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HealthBar
+      name: Empty512x512_11
       rect:
         serializedVersion: 2
         x: 243
@@ -355,8 +355,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ba39656fa6403a4d8563575b81f9b17
-      internalID: 1454687620
+      spriteID: 386e8aa8bc0d8424e8ffacad90ccf934
+      internalID: -1746713149
       vertices: []
       indices: 
       edges: []
@@ -375,6 +375,7 @@ TextureImporter:
       Empty512x512_0: 1525211463
       Empty512x512_1: 896953825
       Empty512x512_10: -396310667
+      Empty512x512_11: -1746713149
       Empty512x512_2: -1604508456
       Empty512x512_3: 1809786879
       Empty512x512_4: 1365874636
@@ -383,7 +384,6 @@ TextureImporter:
       Empty512x512_7: 1876696798
       Empty512x512_8: 1356157422
       Empty512x512_9: -435002323
-      HealthBar: 1454687620
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

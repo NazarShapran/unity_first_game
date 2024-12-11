@@ -6,9 +6,9 @@ namespace Code.Runtime.infrastructure.SaveLoadRegistry
     public class SaveLoadRegistryService : ISaveLoadRegistryService
     {
         private readonly List<IReadProgress> _progressReaders = new();
-        private readonly List<IWriteProgress> _progressWirters = new ();
+        private readonly List<IWriteProgress> _progressWriters = new ();
         public IEnumerable<IReadProgress> ProgressReaders => _progressReaders;
-        public IEnumerable<IWriteProgress> ProgressWriters => _progressWirters;
+        public IEnumerable<IWriteProgress> ProgressWriters => _progressWriters;
 
         public void RegisterAsProgressReader(IReadProgress readProgress)
         {
@@ -16,7 +16,7 @@ namespace Code.Runtime.infrastructure.SaveLoadRegistry
         }
         public void RegisterAsProgressWriter(IWriteProgress writeProgress)
         {
-            _progressWirters.Add(writeProgress);
+            _progressWriters.Add(writeProgress);
         }
 
     }
