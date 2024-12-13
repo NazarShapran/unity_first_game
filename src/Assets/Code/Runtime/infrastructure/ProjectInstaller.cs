@@ -6,6 +6,7 @@ using Code.Runtime.infrastructure.GameStates.States;
 using Code.Runtime.infrastructure.SaveLoadRegistry;
 using Code.Runtime.infrastructure.Service.Factories;
 using Code.Runtime.infrastructure.Service.Input;
+using Code.Runtime.infrastructure.Service.PLayerInventory;
 using Code.Runtime.infrastructure.Service.Progress;
 using Code.Runtime.infrastructure.Service.Random;
 using Code.Runtime.infrastructure.Service.SaveLoad;
@@ -31,6 +32,7 @@ namespace Code.Runtime.infrastructure
         {
             Container.Bind<IWalletService>().To<WalletService>().AsSingle();
             Container.Bind<IShopService>().To<ShopService>().AsSingle();
+            Container.Bind<IPlayerInventoryService>().To<PlayerInventoryService>().AsSingle();
         }
 
         private void BindGameFactories()

@@ -1,6 +1,7 @@
 ﻿using Code.Runtime.Gameplay.Services.Wallet;
 using Code.Runtime.infrastructure.GameStates.Api;
 using Code.Runtime.infrastructure.SaveLoadRegistry;
+using Code.Runtime.infrastructure.Service.PLayerInventory;
 using Code.Runtime.infrastructure.Service.Scene;
 using Code.Runtime.infrastructure.Service.Shop;
 using Code.Runtime.infrastructure.Service.StaticData;
@@ -18,9 +19,11 @@ namespace Code.Runtime.infrastructure.GameStates.States
         private readonly IWalletService _walletService;
         private readonly ISaveLoadRegistryService _saveLoadRegistryService;
         private readonly IShopService _shopService;
+        private readonly IPlayerInventoryService _playerInventoryService;
 
         public BootstrapState(IGameStateMachine gameStateMachine, ISceneLoader sceneLoader, IStaticDataService staticDataService,
-            IWalletService walletService, ISaveLoadRegistryService saveLoadRegistryService, IShopService shopService)
+            IWalletService walletService, ISaveLoadRegistryService saveLoadRegistryService, IShopService shopService,
+            IPlayerInventoryService playerInventoryService)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
@@ -28,19 +31,26 @@ namespace Code.Runtime.infrastructure.GameStates.States
             _walletService = walletService;
             _saveLoadRegistryService = saveLoadRegistryService;
             _shopService = shopService;
+            _playerInventoryService = playerInventoryService;
         }
         public void Enter()
         {
             _sceneLoader.LoadScene(BootstrapSceneName); 
             _staticDataService.LoadAll();
             
+            RegisterProgressReadersWriters();
+
+            _gameStateMachine.Enter<LoadProgressState>();
+        }
+
+        private void RegisterProgressReadersWriters()
+        {
             _saveLoadRegistryService.RegisterAsProgressReader(_walletService);
             _saveLoadRegistryService.RegisterAsProgressWriter(_walletService);
             _saveLoadRegistryService.RegisterAsProgressReader(_shopService);
             _saveLoadRegistryService.RegisterAsProgressWriter(_shopService);
-            
-            _gameStateMachine.Enter<LoadProgressState>();
+            _saveLoadRegistryService.RegisterAsProgressReader(_playerInventoryService);
+            _saveLoadRegistryService.RegisterAsProgressWriter(_playerInventoryService);
         }
-
     }
 }

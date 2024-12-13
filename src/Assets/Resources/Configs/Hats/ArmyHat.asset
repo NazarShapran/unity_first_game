@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c83e8fea96b8415e9fbed98ad756e866, type: 3}
-  m_Name: ShopItemConfig
+  m_Script: {fileID: 11500000, guid: 7d6056c2074f40129cab52089d0bcf72, type: 3}
+  m_Name: ArmyHat
   m_EditorClassIdentifier: 
-  HatTypeId: 1
-  Name: MedicalHat
-  Sprite: {fileID: 21300000, guid: 1d9efcd1339430d44bc94c7173a479d8, type: 3}
-  Price: 20
+  HatTypeId: 2
+  Sprite: {fileID: 21300000, guid: 3724b353e68e7cb4da0d63e21b03811a, type: 3}

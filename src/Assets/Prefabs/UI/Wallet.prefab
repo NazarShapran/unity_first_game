@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 1367528648683800372}
   - component: {fileID: 5499335032611476521}
   - component: {fileID: 3962090385361010654}
+  - component: {fileID: 5565824853040009530}
   m_Layer: 5
   m_Name: CoinView
   m_TagString: Untagged
@@ -269,3 +270,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coinText: {fileID: 5499335032611476521}
+  _punchAnimation: {fileID: 5565824853040009530}
+--- !u!114 &5565824853040009530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4742153531618061299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3978e9327cfc40289f30ba1bf1707a3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 9029349524614179093}
+  _tagretScale: 1.1
+  _duration: 0.2

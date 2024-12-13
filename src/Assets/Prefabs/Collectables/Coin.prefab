@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6133741956849188434}
   - component: {fileID: 5208875486432833720}
   - component: {fileID: 2885081160451108119}
+  - component: {fileID: 3441127262806415530}
   m_Layer: 7
   m_Name: Coin
   m_TagString: Untagged
@@ -207,3 +208,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f46131fc5ca24b99ae5f20b59e91d199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveFadeDestroyer: {fileID: 3441127262806415530}
+  _rigidbody2D: {fileID: -4314348682411440200}
+  _collaider: {fileID: 6133741956849188434}
+--- !u!114 &3441127262806415530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5958622928747213118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e005f9ebfd194e1cacb439f798076376, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRendrer: {fileID: 1726987503673593469}
+  _duration: 1
+  _moveDeltaY: -1

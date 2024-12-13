@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Code.Runtime.Data;
+using Code.Runtime.Gameplay.View.UI.Shop;
 using Code.Runtime.StaticData;
 
 namespace Code.Runtime.infrastructure.Service.StaticData
@@ -10,7 +11,8 @@ namespace Code.Runtime.infrastructure.Service.StaticData
         PlayerConfig PlayerConfig { get; }
         void LoadAll();
         LevelData GetLevelData(string levelName);
+        ShopItemConfig GetShopItemConfig(ShopItemId hatTypeId);
+        IEnumerable<ShopItemConfig> GetHatsConfigs();
         HatConfig GetHatConfig(HatTypeId hatTypeId);
-        IEnumerable<HatConfig> GetHatsConfigs();
     }
 }

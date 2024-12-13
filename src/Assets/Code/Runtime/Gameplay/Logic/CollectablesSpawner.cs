@@ -1,8 +1,10 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using Code.Runtime.Extensions;
 using Code.Runtime.infrastructure.Service.Random;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 using Random = UnityEngine.Random;
 
@@ -14,7 +16,7 @@ namespace Code.Runtime.Gameplay.Logic
         private float _spawnInterval;
         
         [SerializeField]
-        private GameObject _collectable;
+        private List<GameObject> _collectables;
         
         [SerializeField]
         private float _randomDetailX = 2;
@@ -41,7 +43,8 @@ namespace Code.Runtime.Gameplay.Logic
         }
         private void SpawnEnemy()
         {
-            _instantiator.InstantiatePrefab(_collectable, transform.position.SetX(GetRandomX()), quaternion.identity, gameObject.transform);
+            GameObject toSpawn = _random.ChooseFromList(_collectables);
+            _instantiator.InstantiatePrefab(toSpawn, transform.position.SetX(GetRandomX()), quaternion.identity, gameObject.transform);
         }
 
         private float GetRandomX()

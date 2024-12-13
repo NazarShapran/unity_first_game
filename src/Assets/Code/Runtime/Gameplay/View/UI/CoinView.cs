@@ -9,11 +9,13 @@ namespace Code.Runtime.Gameplay.View.UI
 {
     public class CoinView : MonoBehaviour
     {
-        [SerializeField]
-        private TextMeshProUGUI _coinText;
+        [SerializeField] private TextMeshProUGUI _coinText;
+        [SerializeField] PunchAnimation _punchAnimation;
 
         private IWalletService _walletService;
-        
+
+        private int _lastValue;
+
         [Inject]
         private void Construct(IWalletService walletService)
         {
@@ -22,7 +24,14 @@ namespace Code.Runtime.Gameplay.View.UI
 
         private void Update()
         {
+            int newValue = _walletService.Balance;
+            if (_lastValue != newValue)
+            {
+                _punchAnimation.Animate();
+            }
+
             _coinText.text = _walletService.Balance.ToString();
+            _lastValue = _walletService.Balance;
         }
     }
 }
