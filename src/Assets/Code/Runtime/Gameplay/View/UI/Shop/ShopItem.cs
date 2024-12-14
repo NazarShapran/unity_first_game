@@ -1,5 +1,5 @@
 ﻿using System;
-using Code.Runtime.Data;
+using Code.Runtime.Gameplay.Logic.Sounds;
 using Code.Runtime.infrastructure.Service.Shop;
 using TMPro;
 using UnityEngine;
@@ -59,6 +59,7 @@ namespace Code.Runtime.Gameplay.View.UI.Shop
         private void Buy()
         {
             _shopService.BuyItem(_shopTypeId);
+            AudioManager.instance.Play("BuyItem");
             Bought?.Invoke();
         }
         

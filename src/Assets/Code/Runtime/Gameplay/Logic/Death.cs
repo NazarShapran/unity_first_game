@@ -1,4 +1,5 @@
 ﻿using System;
+using Code.Runtime.Gameplay.Logic.Sounds;
 using Code.Runtime.infrastructure.Service.Input;
 using UnityEngine;
 using Zenject;
@@ -47,6 +48,8 @@ namespace Code.Runtime.Gameplay.Logic
         private void OnDeath()
         {
             _inputService.Disable();
+            AudioManager.instance.Stop("Level");
+            AudioManager.instance.Play("GameOver");
             _rigidbody.AddForce(Vector2.up * _feorceOnDeath, ForceMode2D.Impulse);
             _collaider.enabled = false;
         }

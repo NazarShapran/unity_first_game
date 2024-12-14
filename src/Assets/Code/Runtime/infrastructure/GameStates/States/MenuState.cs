@@ -1,4 +1,5 @@
-﻿using Code.Runtime.infrastructure.GameStates.Api;
+﻿using Code.Runtime.Gameplay.Logic.Sounds;
+using Code.Runtime.infrastructure.GameStates.Api;
 using Code.Runtime.infrastructure.Service.Scene;
 
 namespace Code.Runtime.infrastructure.GameStates.States
@@ -15,6 +16,7 @@ namespace Code.Runtime.infrastructure.GameStates.States
 
         public void Enter()
         {
+            AudioManager.instance.Play("Menu");
             _sceneLoader.LoadScene(MenuSceneName);
         }
     }

@@ -1,7 +1,9 @@
-﻿using Code.Runtime.infrastructure.GameStates.Api;
+﻿using Code.Runtime.Gameplay.Logic.Sounds;
+using Code.Runtime.infrastructure.GameStates.Api;
 using Code.Runtime.infrastructure.Service.Input;
 using Code.Runtime.infrastructure.Service.StaticData;
 using UnityEngine;
+using DG.Tweening;
 
 namespace Code.Runtime.infrastructure.GameStates.States
 {
@@ -19,6 +21,8 @@ namespace Code.Runtime.infrastructure.GameStates.States
         public void Enter()
         {
             _inputService.Enable();
+            AudioManager.instance.Stop("Menu");
+            AudioManager.instance.Play("Level");
             Debug.Log($"Start level with health config: {_staticDataService.PlayerConfig.StartHealth}");
         }
 

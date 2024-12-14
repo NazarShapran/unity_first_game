@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Code.Runtime.Gameplay.Logic.Sounds;
+using UnityEngine;
 
 namespace Code.Runtime.Gameplay.Logic
 {
@@ -12,6 +13,7 @@ namespace Code.Runtime.Gameplay.Logic
         public void Collect(Collector collector)
         {
             IsCollected = true;
+            AudioManager.instance.Play("Mace");
             collector.GetComponent<Health>().Subtract(_healthToSubstract);
         }
     }

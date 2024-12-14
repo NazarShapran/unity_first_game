@@ -1,4 +1,5 @@
-﻿using Code.Runtime.Gameplay.Services.Wallet;
+﻿using Code.Runtime.Gameplay.Logic.Sounds;
+using Code.Runtime.Gameplay.Services.Wallet;
 using Code.Runtime.Gameplay.View;
 using Code.Runtime.infrastructure.Service.Random;
 using Code.Runtime.infrastructure.Service.SaveLoad;
@@ -39,6 +40,7 @@ namespace Code.Runtime.Gameplay.Logic
 
             Destroy(_rigidbody2D);
             _collider2D.enabled = false;
+            AudioManager.instance.Play("MinusMoney");
             _moveFadeDestroyer.Destroy();
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using Code.Runtime.Data;
+using Code.Runtime.Gameplay.Logic.Sounds;
 using Code.Runtime.infrastructure.Service.PLayerInventory;
 using Code.Runtime.infrastructure.Service.StaticData;
 using Code.Runtime.StaticData;
@@ -46,6 +47,7 @@ namespace Code.Runtime.Gameplay.View.UI
             if(!_invenrtoryService.HasAnyHat)
                 return;
             _invenrtoryService.SelectNextHat();
+            AudioManager.instance.Play("ChangeHat");
             UpdateView();
         }
 

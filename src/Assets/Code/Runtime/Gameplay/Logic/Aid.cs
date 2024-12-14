@@ -1,4 +1,5 @@
-﻿using Code.Runtime.Gameplay.View;
+﻿using Code.Runtime.Gameplay.Logic.Sounds;
+using Code.Runtime.Gameplay.View;
 using Code.Runtime.infrastructure.Service.Random;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -30,6 +31,7 @@ namespace Code.Runtime.Gameplay.Logic
             
             Destroy(_rigidbody2D);
             _collider2D.enabled = false;
+            AudioManager.instance.Play("Aid");
             _moveFadeDestroyer.Destroy();
         }
     }
