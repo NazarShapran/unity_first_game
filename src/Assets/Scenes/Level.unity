@@ -567,9 +567,9 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: GameOver
-    clip: {fileID: 8300000, guid: abffa0c7eb2ab46998d7b843ed0b0ecb, type: 3}
+    clip: {fileID: 8300000, guid: 9e4e123a32ad8b14b943fa1a6f86ded1, type: 3}
     mixer: {fileID: 0}
-    volume: 0.43
+    volume: 0.204
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -625,7 +625,7 @@ MonoBehaviour:
   - name: ChangeHat
     clip: {fileID: 8300000, guid: b3956d694e38d9109bc53c2b350682be, type: 3}
     mixer: {fileID: 0}
-    volume: 0.345
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}

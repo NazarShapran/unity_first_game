@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections;
+using Code.Runtime.Data;
 using Code.Runtime.Gameplay.Logic.Sounds;
 using Code.Runtime.infrastructure.Service.Input;
+using Code.Runtime.infrastructure.Service.Windows;
 using UnityEngine;
 using Zenject;
 
@@ -20,6 +23,10 @@ namespace Code.Runtime.Gameplay.Logic
 
         [SerializeField]
         private Collider2D _collaider;
+        
+        private readonly float _deathWindowPopUpTime = 2f;
+
+        private IWindowService _windowService;
 
 
         private void OnValidate()
@@ -30,9 +37,10 @@ namespace Code.Runtime.Gameplay.Logic
         }
 
         [Inject]
-        private void Construct(IInputService inputService)
+        private void Construct(IInputService inputService, IWindowService windowService)
         {
             _inputService = inputService;
+            _windowService = windowService;
         }
         
         private void Awake()
@@ -52,6 +60,13 @@ namespace Code.Runtime.Gameplay.Logic
             AudioManager.instance.Play("GameOver");
             _rigidbody.AddForce(Vector2.up * _feorceOnDeath, ForceMode2D.Impulse);
             _collaider.enabled = false;
+            StartCoroutine(OpenDeathWindowAfterDelay());
+        }
+        
+        private IEnumerator OpenDeathWindowAfterDelay()
+        {
+            yield return new WaitForSecondsRealtime(_deathWindowPopUpTime);
+            _windowService.OpenWindow(WindowTypeId.Loss);
         }
     }
 }

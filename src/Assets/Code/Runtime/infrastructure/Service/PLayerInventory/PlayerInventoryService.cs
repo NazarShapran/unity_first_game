@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Code.Runtime.Data;
 using Code.Runtime.infrastructure.SaveLoad;
+using UnityEngine;
 
 namespace Code.Runtime.infrastructure.Service.PLayerInventory
 {
@@ -23,7 +24,7 @@ namespace Code.Runtime.infrastructure.Service.PLayerInventory
             if (findIndex < _hats.Count - 1)
             {
                 SelectedHat = _hats[findIndex + 1];
-            }       
+            }
             else
             {
                 SelectedHat = HatTypeId.None;

@@ -1,4 +1,5 @@
-﻿using Code.Runtime.infrastructure.Service.WindowButtons;
+﻿using Code.Runtime.Gameplay.Logic.Sounds;
+using Code.Runtime.infrastructure.Service.WindowButtons;
 using UnityEngine;
 using Zenject;
 
@@ -16,6 +17,7 @@ namespace Code.Runtime.Gameplay.View.UI.Windows
 
         public void Pause()
         {
+            AudioManager.instance.Stop("Level");
             _windowButtonsService.PressPauseButton();
         }
     }

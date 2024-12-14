@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81ae9df393024f97a1f4a2264bee9d8a, type: 3}
   m_Name: LossWindow
   m_EditorClassIdentifier: 
-  WindowPrefab: {fileID: 1068188841859468298, guid: a91c9de37e936cc418b803c0994cc548, type: 3}
+  WindowPrefab: {fileID: 4804857634466181176, guid: 5f7407b81933ebe46938155f2ad0b528, type: 3}
   WindowTypeId: 2

@@ -271,7 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: {fileID: 5024287747786261587}
   _rigidbody: {fileID: 2633505249213301191}
-  _feorceOnDeath: 7
+  _feorceOnDeath: 4
   _collaider: {fileID: 7530309906038484884}
 --- !u!1 &8704306183400560239
 GameObject:

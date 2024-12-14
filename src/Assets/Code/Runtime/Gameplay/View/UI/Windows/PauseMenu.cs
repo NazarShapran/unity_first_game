@@ -1,4 +1,5 @@
-﻿using Code.Runtime.infrastructure.Service.WindowButtons;
+﻿using Code.Runtime.Gameplay.Logic.Sounds;
+using Code.Runtime.infrastructure.Service.WindowButtons;
 using UnityEngine;
 using Zenject;
 
@@ -22,16 +23,19 @@ namespace Code.Runtime.Gameplay.View.UI.Windows
 
         public void Resume()
         {
+            AudioManager.instance.Play("Level");
             _windowButtonsService.PressResumeButton();
         }
 
         public void Restart()
         {
+            AudioManager.instance.Play("Level");
             _windowButtonsService.PressRestartButton(LevelName);
         }
 
         public void ExitToMenu()
         {
+            AudioManager.instance.Play("Menu");
             _windowButtonsService.PressExitButton(BootstrapSceneMenu);
         }
     }
