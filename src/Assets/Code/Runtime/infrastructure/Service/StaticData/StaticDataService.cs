@@ -12,8 +12,10 @@ namespace Code.Runtime.infrastructure.Service.StaticData
         private Dictionary<string, LevelData> _levelData;
         private Dictionary<ShopItemId, ShopItemConfig> _shopItems;
         private Dictionary<HatTypeId, HatConfig> _hats;
+        private Dictionary<WindowTypeId, WindowConfig> _windows;
         public HudConfig HUDConfig { get; private set; }
         public PlayerConfig PlayerConfig { get; private set; }
+        public WindowConfig WindowConfig { get; private set; }
 
         public void LoadAll()
         {
@@ -22,13 +24,20 @@ namespace Code.Runtime.infrastructure.Service.StaticData
             LoadLevels();
             LoadShopItems();
             LoadHatConfigs();
+            LoadWindows();
         }
+
+        
 
         public HatConfig GetHatConfig(HatTypeId hatTypeId) =>
             _hats.GetValueOrDefault(hatTypeId);
 
+        public WindowConfig GetWindowConfig(WindowTypeId windowTypeId) => 
+            _windows.GetValueOrDefault(windowTypeId);
+
         public ShopItemConfig GetShopItemConfig(ShopItemId hatTypeId) =>
             _shopItems.GetValueOrDefault(hatTypeId);
+
         public IEnumerable<ShopItemConfig> GetHatsConfigs() =>
             _shopItems.Values;
 
@@ -39,6 +48,7 @@ namespace Code.Runtime.infrastructure.Service.StaticData
                 .LoadAll<ShopItemConfig>("Configs/ShopItems")
                 .ToDictionary(x => x.ShopItemId);
         }
+
         private void LoadHatConfigs()
         {
             _hats = Resources
@@ -47,6 +57,7 @@ namespace Code.Runtime.infrastructure.Service.StaticData
         }
 
         public LevelData GetLevelData(string levelName) => _levelData[levelName];
+
         private void LoadLevels()
         {
             _levelData = Resources.LoadAll<LevelData>("Configs/Levels").ToDictionary(level => level.LevelName);
@@ -60,6 +71,10 @@ namespace Code.Runtime.infrastructure.Service.StaticData
         private void LoadPlayerConfig()
         {
             PlayerConfig = Resources.Load<PlayerConfig>("Configs/PlayerConfig");
+        }
+        private void LoadWindows()
+        {
+            _windows = Resources.LoadAll<WindowConfig>("Configs/Windows").ToDictionary(x => x.WindowTypeId);
         }
     }
 }

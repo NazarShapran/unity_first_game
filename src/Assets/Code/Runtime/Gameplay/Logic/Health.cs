@@ -33,5 +33,21 @@ namespace Code.Runtime.Gameplay.Logic
                 Death?.Invoke();
             }
         }
+
+        public void Heal(float healthToHeal)
+        {
+            if (healthToHeal < 0)
+                throw new InvalidOperationException($"Health to heal have to be positive but was {healthToHeal}");
+            if (CurrentHealth <= 0)
+            {
+                return;
+            }
+            CurrentHealth += healthToHeal;
+            if (CurrentHealth > MaxHealth)
+            {
+                CurrentHealth = MaxHealth;
+            }
+            Changed?.Invoke();
+        }
     }
 }

@@ -9,10 +9,12 @@ namespace Code.Runtime.infrastructure.Service.StaticData
     {
         HudConfig HUDConfig { get; }
         PlayerConfig PlayerConfig { get; }
+        WindowConfig WindowConfig { get; }
         void LoadAll();
         LevelData GetLevelData(string levelName);
         ShopItemConfig GetShopItemConfig(ShopItemId hatTypeId);
         IEnumerable<ShopItemConfig> GetHatsConfigs();
         HatConfig GetHatConfig(HatTypeId hatTypeId);
+        WindowConfig GetWindowConfig(WindowTypeId windowTypeId);
     }
 }
