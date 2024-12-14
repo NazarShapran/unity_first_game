@@ -20,7 +20,6 @@ GameObject:
   - component: {fileID: 2744637977845119185}
   - component: {fileID: 5024287747786261587}
   - component: {fileID: 2985853141772866512}
-  - component: {fileID: 6253895774690199795}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -274,19 +273,6 @@ MonoBehaviour:
   _rigidbody: {fileID: 2633505249213301191}
   _feorceOnDeath: 7
   _collaider: {fileID: 7530309906038484884}
---- !u!114 &6253895774690199795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7410852216066846532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a37d64da812c4e46bf46c472969143d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 2891213073906516528}
 --- !u!1 &8704306183400560239
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,6 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 408241240566010115}
   - component: {fileID: 7580879490712412700}
+  - component: {fileID: 7215051931704553751}
   m_Layer: 0
   m_Name: Hat
   m_TagString: Untagged
@@ -360,14 +347,27 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 200
-  m_Sprite: {fileID: 21300000, guid: 3724b353e68e7cb4da0d63e21b03811a, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7215051931704553751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8704306183400560239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a37d64da812c4e46bf46c472969143d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 7580879490712412700}
