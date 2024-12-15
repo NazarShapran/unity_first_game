@@ -1,12 +1,10 @@
-﻿using System;
-using Code.Runtime.Data;
-using Code.Runtime.Gameplay.Logic;
+﻿using Code.Runtime.Data;
 using Code.Runtime.infrastructure.Service.Input;
 using Code.Runtime.infrastructure.Service.StaticData;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Runtime.Gameplay
+namespace Code.Runtime.Gameplay.Logic
 {
     public class PlayerInputY : MonoBehaviour
     {

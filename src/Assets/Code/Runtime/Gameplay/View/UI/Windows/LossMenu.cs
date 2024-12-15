@@ -23,11 +23,13 @@ namespace Code.Runtime.Gameplay.View.UI.Windows
         
         public void Restart()
         {
+            AudioManager.instance.Play("InterfaceButtons");
             _windowButtonsService.PressRestartButton(BootstrapSceneMenu);
         }
         
         public void ExitToMenu()
         {
+            AudioManager.instance.Play("InterfaceButtons");
             AudioManager.instance.Play("Menu");
             _windowButtonsService.PressExitButton(LevelName);
         }

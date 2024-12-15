@@ -1,4 +1,5 @@
-﻿using Code.Runtime.infrastructure.GameStates.Api;
+﻿using Code.Runtime.Gameplay.Logic.Sounds;
+using Code.Runtime.infrastructure.GameStates.Api;
 using Code.Runtime.infrastructure.GameStates.States;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -31,6 +32,7 @@ namespace Code.Runtime.Gameplay.View.UI
 
         private void OnButtonClick()
         {
+            AudioManager.instance.Play("InterfaceButtons");
             _gameStateMachine.Enter<LoadLevelState, string>("Level");
         }
     }

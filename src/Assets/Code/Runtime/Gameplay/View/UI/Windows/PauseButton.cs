@@ -17,6 +17,7 @@ namespace Code.Runtime.Gameplay.View.UI.Windows
 
         public void Pause()
         {
+            AudioManager.instance.Play("InterfaceButtons");
             AudioManager.instance.Stop("Level");
             _windowButtonsService.PressPauseButton();
         }
