@@ -16,5 +16,6 @@ namespace Code.Runtime.infrastructure.Service.StaticData
         IEnumerable<ShopItemConfig> GetHatsConfigs();
         HatConfig GetHatConfig(HatTypeId hatTypeId);
         WindowConfig GetWindowConfig(WindowTypeId windowTypeId);
+        JumpConfig GetJumpConfig(JumpTypeId jumpTypeId);
     }
 }

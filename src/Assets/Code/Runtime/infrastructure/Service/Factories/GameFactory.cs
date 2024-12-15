@@ -1,4 +1,5 @@
-﻿using Code.Runtime.Gameplay.Logic;
+﻿using Code.Runtime.Gameplay;
+using Code.Runtime.Gameplay.Logic;
 using Code.Runtime.Gameplay.Services.Wallet;
 using Code.Runtime.Gameplay.View.UI;
 using Code.Runtime.infrastructure.Service.PLayerInventory;
@@ -26,6 +27,7 @@ namespace Code.Runtime.infrastructure.Service.Factories
             GameObject player = _instantiator.InstantiatePrefab(_staticDataService.PlayerConfig.PlayerPrefab, position, Quaternion.identity, null); 
             player.GetComponent<Health>().CurrentHealth = _staticDataService.PlayerConfig.StartHealth;
             player.GetComponentInChildren<Hat>().SetHat(_playerInventoryService.SelectedHat);
+            player.GetComponent<PlayerInputY>().SetJumpTypeId(_playerInventoryService.GetMaxJump());
             
             return player;
         }

@@ -5,5 +5,6 @@
         void Enable();
         void Disable();
         float GetMovement();
+        bool GetJump();
     }
 }

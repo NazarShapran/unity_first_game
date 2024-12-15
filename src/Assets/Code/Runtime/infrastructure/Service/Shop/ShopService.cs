@@ -46,6 +46,10 @@ namespace Code.Runtime.infrastructure.Service.Shop
             {
                 _playerInventoryService.AddHat(config.HatTypeId);
             }
+            else if (config.JumpTypeId != JumpTypeId.None)
+            {
+                _playerInventoryService.AddJump(config.JumpTypeId);
+            }
 
             _saveLoadService.SaveProgress();
         }

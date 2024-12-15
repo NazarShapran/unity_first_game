@@ -11,6 +11,7 @@ namespace Code.Runtime.Data
         public int Coins;
         public List<ShopItemId> PurchesedItems = new();
         public List<HatTypeId> OwnedHats = new();
+        public List<JumpTypeId> OwnedJumps = new();
         public HatTypeId SelectedHat = HatTypeId.None;
     }
 }

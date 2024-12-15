@@ -3,6 +3,7 @@
     public class InputService : IInputService
     {
         private const string AxisHorizontal = "Horizontal";
+        private const string JumpButtonName = "Jump";
 
         private bool _enabled;
         public void Enable() => _enabled = true;
@@ -12,5 +13,10 @@
             _enabled 
                 ? UnityEngine.Input.GetAxis(AxisHorizontal)
                 : 0;
+
+        public bool GetJump()
+        {
+            return _enabled && UnityEngine.Input.GetButtonDown(JumpButtonName);
+        }
     }
 }

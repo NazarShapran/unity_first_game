@@ -13,6 +13,7 @@ namespace Code.Runtime.infrastructure.Service.StaticData
         private Dictionary<ShopItemId, ShopItemConfig> _shopItems;
         private Dictionary<HatTypeId, HatConfig> _hats;
         private Dictionary<WindowTypeId, WindowConfig> _windows;
+        private Dictionary<JumpTypeId, JumpConfig> _jumps;
         public HudConfig HUDConfig { get; private set; }
         public PlayerConfig PlayerConfig { get; private set; }
         public WindowConfig WindowConfig { get; private set; }
@@ -25,16 +26,26 @@ namespace Code.Runtime.infrastructure.Service.StaticData
             LoadShopItems();
             LoadHatConfigs();
             LoadWindows();
+            LoadJumpConfigs();
         }
 
-        
 
+        public JumpConfig GetJumpConfig(JumpTypeId jumpTypeId)
+            => _jumps.GetValueOrDefault(jumpTypeId);
         public HatConfig GetHatConfig(HatTypeId hatTypeId) =>
             _hats.GetValueOrDefault(hatTypeId);
 
         public WindowConfig GetWindowConfig(WindowTypeId windowTypeId) => 
             _windows.GetValueOrDefault(windowTypeId);
 
+        private void LoadJumpConfigs()
+        {
+            _jumps = Resources
+                .LoadAll<JumpConfig>("Configs/Jumps")
+                .ToDictionary(x => x.JumpTypeId);
+            
+            Debug.Log($"Loaded {_jumps.Count} jumps");
+        }
         public ShopItemConfig GetShopItemConfig(ShopItemId hatTypeId) =>
             _shopItems.GetValueOrDefault(hatTypeId);
 

@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Code.Runtime.Data;
+﻿using Code.Runtime.Data;
 using Code.Runtime.infrastructure.SaveLoad;
 using Code.Runtime.infrastructure.SaveLoadRegistry;
 using Code.Runtime.infrastructure.Service.Progress;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace Code.Runtime.infrastructure.Service.SaveLoad
@@ -25,13 +25,13 @@ namespace Code.Runtime.infrastructure.Service.SaveLoad
             {
                 writeProgress.Write(_progressService.PlayerProgress);
             }
-            string json = JsonUtility.ToJson(_progressService.PlayerProgress);
+            string json = JsonConvert.SerializeObject(_progressService.PlayerProgress);
             PlayerPrefs.SetString(PlayerProgress, json);
         }
         public PlayerProgress LoadProgress()
         {
             string json = PlayerPrefs.GetString(PlayerProgress);
-            return JsonUtility.FromJson<PlayerProgress>(json);
+            return JsonConvert.DeserializeObject<PlayerProgress>(json);
         }
     }
 }

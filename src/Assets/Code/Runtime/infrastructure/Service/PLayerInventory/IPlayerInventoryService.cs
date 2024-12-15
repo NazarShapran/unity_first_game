@@ -9,5 +9,7 @@ namespace Code.Runtime.infrastructure.Service.PLayerInventory
         bool HasAnyHat { get; }
         HatTypeId SelectedHat { get; }
         void SelectNextHat();
+        void AddJump(JumpTypeId jumpTypeId);
+        JumpTypeId GetMaxJump();
     }
 }

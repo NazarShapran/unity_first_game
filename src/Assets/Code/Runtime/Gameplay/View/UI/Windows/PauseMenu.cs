@@ -7,7 +7,7 @@ namespace Code.Runtime.Gameplay.View.UI.Windows
 {
     public class PauseMenu : MonoBehaviour
     {
-        private const string BootstrapSceneMenu = "BoostrapScene";
+        private const string BootstrapSceneMenu = "BootstrapScene";
         private readonly string LevelName = "Level";
         
         [SerializeField]
