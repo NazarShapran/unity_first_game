@@ -908,6 +908,128 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1367212749}
   m_CullTransparentMesh: 1
+--- !u!1 &1400013498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1400013500}
+  - component: {fileID: 1400013499}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1400013499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400013498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a692bc2b0ed94fdda4ba45ceeff92f9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Coin
+    clip: {fileID: 8300000, guid: bb0a2ec1146890cb4b2363065b1f31e4, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.298
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: GameOver
+    clip: {fileID: 8300000, guid: 9e4e123a32ad8b14b943fa1a6f86ded1, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.204
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Mace
+    clip: {fileID: 8300000, guid: e2a7ade5995117f45ab28d0ae6680f79, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.349
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Aid
+    clip: {fileID: 8300000, guid: b7a29b1ccf0d999bf9fba0b0719181c6, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.319
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MinusMoney
+    clip: {fileID: 8300000, guid: a03378020781a95b5aca73dbb81b98f7, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.197
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: FootSteps
+    clip: {fileID: 8300000, guid: 766638209b0b35f72b3ee54e7d34dea7, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.397
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Menu
+    clip: {fileID: 8300000, guid: bef0cef2ded0f0645ad90c6e5bdd4965, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.129
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Level
+    clip: {fileID: 8300000, guid: 89f935015cc98724a862a586326fdf21, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.073
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: BuyItem
+    clip: {fileID: 8300000, guid: 89ae9828e2f8913779b44d7d553bad9a, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.228
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ChangeHat
+    clip: {fileID: 8300000, guid: b3956d694e38d9109bc53c2b350682be, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: InterfaceButtons
+    clip: {fileID: 8300000, guid: 216db6bf3710959d28d08cf8f248f378, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+--- !u!4 &1400013500
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400013498}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1499805136
 GameObject:
   m_ObjectHideFlags: 0
@@ -1483,3 +1605,4 @@ SceneRoots:
   - {fileID: 2088261323}
   - {fileID: 1962752175}
   - {fileID: 1161523100}
+  - {fileID: 1400013500}

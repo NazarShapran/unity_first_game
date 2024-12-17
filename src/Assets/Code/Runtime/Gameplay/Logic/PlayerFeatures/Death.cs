@@ -12,7 +12,6 @@ namespace Code.Runtime.Gameplay.Logic.PlayerFeatures
     {
         [SerializeField] private Health _health;
 
-        private IInputService _inputService;
         [SerializeField] private Rigidbody2D _rigidbody;
 
         [SerializeField] private float _feorceOnDeath;
@@ -20,8 +19,9 @@ namespace Code.Runtime.Gameplay.Logic.PlayerFeatures
         [SerializeField] private Collider2D _collaider;
 
         private readonly float _deathWindowPopUpTime = 2f;
-
+        private IInputService _inputService;
         private IWindowService _windowService;
+        private AudioManager _audioManager;
 
 
         private void OnValidate()
@@ -32,10 +32,11 @@ namespace Code.Runtime.Gameplay.Logic.PlayerFeatures
         }
 
         [Inject]
-        private void Construct(IInputService inputService, IWindowService windowService)
+        private void Construct(IInputService inputService, IWindowService windowService, AudioManager audioManager)
         {
             _inputService = inputService;
             _windowService = windowService;
+            _audioManager = audioManager;
         }
 
         private void Awake()
@@ -51,8 +52,8 @@ namespace Code.Runtime.Gameplay.Logic.PlayerFeatures
         private void OnDeath()
         {
             _inputService.Disable();
-            AudioManager.instance.Stop("Level");
-            AudioManager.instance.Play("GameOver");
+            _audioManager.Stop(SoundType.Level);
+            _audioManager.Play(SoundType.GameOver);
             _rigidbody.AddForce(Vector2.up * _feorceOnDeath, ForceMode2D.Impulse);
             _collaider.enabled = false;
             StartCoroutine(OpenDeathWindowAfterDelay());

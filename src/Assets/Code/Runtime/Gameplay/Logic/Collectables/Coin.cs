@@ -1,4 +1,5 @@
-﻿using Code.Runtime.Gameplay.Logic.Sounds;
+﻿using Code.Runtime.Data;
+using Code.Runtime.Gameplay.Logic.Sounds;
 using Code.Runtime.Gameplay.Services.Wallet;
 using Code.Runtime.Gameplay.View;
 using Code.Runtime.infrastructure.Service.SaveLoad;
@@ -20,13 +21,15 @@ namespace Code.Runtime.Gameplay.Logic.Collectables
         
         private IWalletService _walletService;
         private ISaveLoadService _saveLoadService;
+        private AudioManager _audioManager;
         public bool IsCollected { get; private set; }
 
         [Inject]
-        private void Construct(IWalletService walletService, ISaveLoadService saveLoadService)
+        private void Construct(IWalletService walletService, ISaveLoadService saveLoadService, AudioManager audioManager)
         {
             _walletService = walletService;
             _saveLoadService = saveLoadService;
+            _audioManager = audioManager;
         }
         public void Collect(Collector collector)
         { 
@@ -36,7 +39,7 @@ namespace Code.Runtime.Gameplay.Logic.Collectables
 
             Destroy(_rigidbody2D);
             _collaider.enabled = false;
-            AudioManager.instance.Play("Coin");
+            _audioManager.Play(SoundType.Coin);
             _moveFadeDestroyer.Destroy();
         }
     }

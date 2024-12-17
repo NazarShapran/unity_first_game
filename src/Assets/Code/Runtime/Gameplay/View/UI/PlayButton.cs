@@ -1,4 +1,5 @@
-﻿using Code.Runtime.Gameplay.Logic.Sounds;
+﻿using Code.Runtime.Data;
+using Code.Runtime.Gameplay.Logic.Sounds;
 using Code.Runtime.infrastructure.GameStates.Api;
 using Code.Runtime.infrastructure.GameStates.States;
 using Unity.VisualScripting;
@@ -14,11 +15,13 @@ namespace Code.Runtime.Gameplay.View.UI
         private Button _button;
 
         private IGameStateMachine _gameStateMachine;
+        private AudioManager _audioManager;
         
         [Inject]
-        private void Construct(IGameStateMachine gameStateMachine)
+        private void Construct(IGameStateMachine gameStateMachine, AudioManager audioManager)
         {
             _gameStateMachine = gameStateMachine;
+            _audioManager = audioManager;
         }
         private void Awake()
         {
@@ -32,7 +35,7 @@ namespace Code.Runtime.Gameplay.View.UI
 
         private void OnButtonClick()
         {
-            AudioManager.instance.Play("InterfaceButtons");
+            _audioManager.Play(SoundType.InterfaceButtons);
             _gameStateMachine.Enter<LoadLevelState, string>("Level");
         }
     }

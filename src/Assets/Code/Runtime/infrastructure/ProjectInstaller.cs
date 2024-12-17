@@ -1,4 +1,5 @@
-﻿using Code.Runtime.Gameplay.Services.Wallet;
+﻿using Code.Runtime.Gameplay.Logic.Sounds;
+using Code.Runtime.Gameplay.Services.Wallet;
 using Code.Runtime.infrastructure.GameStates.Api;
 using Code.Runtime.infrastructure.GameStates.Provider;
 using Code.Runtime.infrastructure.GameStates.StateMachine;
@@ -17,6 +18,7 @@ using Code.Runtime.infrastructure.Service.StaticData;
 using Code.Runtime.infrastructure.Service.TimeService;
 using Code.Runtime.infrastructure.Service.WindowButtons;
 using Code.Runtime.infrastructure.Service.Windows;
+using UnityEngine;
 using Zenject;
 
 namespace Code.Runtime.infrastructure
@@ -29,6 +31,7 @@ namespace Code.Runtime.infrastructure
             BindGameStates();
             BindGameFactories();
             BindGameplayServices();
+            BindAudioManager();
             Container.BindInterfacesAndSelfTo<ProjectInstaller>().FromInstance(this).AsSingle();
         }
 
@@ -42,6 +45,14 @@ namespace Code.Runtime.infrastructure
         private void BindGameFactories()
         {
             Container.Bind<IGameFactory>().To<GameFactory>().AsSingle();
+        }
+        
+        private void BindAudioManager()
+        {
+            GameObject audioManagerObject = GameObject.Find("AudioManager");
+            AudioManager audioManager = audioManagerObject.GetComponent<AudioManager>();
+
+            Container.Bind<AudioManager>().FromInstance(audioManager).AsSingle();
         }
 
         private void BindGameStates()

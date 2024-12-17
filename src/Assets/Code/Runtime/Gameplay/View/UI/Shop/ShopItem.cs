@@ -1,4 +1,5 @@
 ﻿using System;
+using Code.Runtime.Data;
 using Code.Runtime.Gameplay.Logic.Sounds;
 using Code.Runtime.infrastructure.Service.Shop;
 using TMPro;
@@ -19,11 +20,17 @@ namespace Code.Runtime.Gameplay.View.UI.Shop
         [SerializeField]
         private Button _buyButton;
         
+        private AudioManager _audioManager;
         private IShopService _shopService;
         private ShopItemId _shopTypeId;
         
         public ShopItemId ShopTypeId => _shopTypeId;
-
+        
+        [Inject]
+        private void Construct(AudioManager audioManager)
+        {
+            _audioManager = audioManager;
+        }
         public ShopItem(IShopService shopService)
         {
             _shopService = shopService;
@@ -59,7 +66,7 @@ namespace Code.Runtime.Gameplay.View.UI.Shop
         private void Buy()
         {
             _shopService.BuyItem(_shopTypeId);
-            AudioManager.instance.Play("BuyItem");
+            _audioManager.Play(SoundType.BuyItem);
             Bought?.Invoke();
         }
         

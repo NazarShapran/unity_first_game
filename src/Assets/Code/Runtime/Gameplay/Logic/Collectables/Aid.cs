@@ -1,4 +1,5 @@
-﻿using Code.Runtime.Gameplay.Logic.PlayerFeatures;
+﻿using Code.Runtime.Data;
+using Code.Runtime.Gameplay.Logic.PlayerFeatures;
 using Code.Runtime.Gameplay.Logic.Sounds;
 using Code.Runtime.Gameplay.View;
 using Code.Runtime.infrastructure.Service.Random;
@@ -16,11 +17,13 @@ namespace Code.Runtime.Gameplay.Logic.Collectables
         [SerializeField] private Collider2D _collider2D;
         
         private IRandomInterface _randomService;
+        private AudioManager _audioManager;
         
         [Inject]
-        private void Construct(IRandomInterface randomService)
+        private void Construct(IRandomInterface randomService, AudioManager audioManager)
         {
             _randomService = randomService;
+            _audioManager = audioManager;
         }
         public bool IsCollected { get; private set; }
         public void Collect(Collector collector)
@@ -31,7 +34,7 @@ namespace Code.Runtime.Gameplay.Logic.Collectables
             
             Destroy(_rigidbody2D);
             _collider2D.enabled = false;
-            AudioManager.instance.Play("Aid");
+            _audioManager.Play(SoundType.Aid);
             _moveFadeDestroyer.Destroy();
         }
     }

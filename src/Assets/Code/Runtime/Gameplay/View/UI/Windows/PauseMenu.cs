@@ -1,4 +1,5 @@
-﻿using Code.Runtime.Gameplay.Logic.Sounds;
+﻿using Code.Runtime.Data;
+using Code.Runtime.Gameplay.Logic.Sounds;
 using Code.Runtime.infrastructure.Service.WindowButtons;
 using UnityEngine;
 using Zenject;
@@ -14,31 +15,33 @@ namespace Code.Runtime.Gameplay.View.UI.Windows
         GameObject pauseMenu;
 
         private IWindowButtonsService _windowButtonsService;
+        private AudioManager _audioManager;
 
         [Inject]
-        private void Construct(IWindowButtonsService windowButtonsService)
+        private void Construct(IWindowButtonsService windowButtonsService, AudioManager audioManager)
         {
             _windowButtonsService = windowButtonsService;
+            _audioManager = audioManager;
         }
 
         public void Resume()
         {
-            AudioManager.instance.Play("InterfaceButtons");
-            AudioManager.instance.Play("Level");
+            _audioManager.Play(SoundType.InterfaceButtons);
+            _audioManager.Play(SoundType.Level);
             _windowButtonsService.PressResumeButton();
         }
 
         public void Restart()
         {
-            AudioManager.instance.Play("InterfaceButtons");
-            AudioManager.instance.Play("Level");
+            _audioManager.Play(SoundType.InterfaceButtons);
+            _audioManager.Play(SoundType.Level);
             _windowButtonsService.PressRestartButton(LevelName);
         }
 
         public void ExitToMenu()
         {
-            AudioManager.instance.Play("InterfaceButtons");
-            AudioManager.instance.Play("Menu");
+            _audioManager.Play(SoundType.InterfaceButtons);
+            _audioManager.Play(SoundType.Level);
             _windowButtonsService.PressExitButton(BootstrapSceneMenu);
         }
     }

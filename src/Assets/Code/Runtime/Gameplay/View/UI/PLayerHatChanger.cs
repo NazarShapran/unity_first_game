@@ -20,13 +20,15 @@ namespace Code.Runtime.Gameplay.View.UI
 
         private IPlayerInventoryService _invenrtoryService;
         private IStaticDataService _staticDataService;
+        private AudioManager _audioManager;
 
 
         [Inject]
-        private void Construct(IPlayerInventoryService playerInventoryService, IStaticDataService staticDataService)
+        private void Construct(IPlayerInventoryService playerInventoryService, IStaticDataService staticDataService, AudioManager audioManager)
         {
             _invenrtoryService = playerInventoryService;
             _staticDataService = staticDataService;
+            _audioManager = audioManager;
         }
 
         private void Awake()
@@ -47,7 +49,7 @@ namespace Code.Runtime.Gameplay.View.UI
             if(!_invenrtoryService.HasAnyHat)
                 return;
             _invenrtoryService.SelectNextHat();
-            AudioManager.instance.Play("ChangeHat");
+            _audioManager.Play(SoundType.ChangeHat);
             UpdateView();
         }
 

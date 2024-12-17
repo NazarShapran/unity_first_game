@@ -2,12 +2,13 @@
 using UnityEngine.Audio;
 using DG.Tweening;
 using System;
+using Code.Runtime.Data;
 
 namespace Code.Runtime.Gameplay.Logic.Sounds
 {
     public class AudioManager : MonoBehaviour
     {
-        public static AudioManager instance;
+        public AudioManager instance;
 
         public Sound[] sounds;
 
@@ -35,34 +36,37 @@ namespace Code.Runtime.Gameplay.Logic.Sounds
             }
         }
 
-        public void Play(string sound)
+        public void Play(SoundType soundType)
         {
-            Sound s = Array.Find(sounds, item => item.name == sound);
+            string soundName = soundType.ToString();
+            Sound s = Array.Find(sounds, item => item.name == soundName);
             if (s == null)
             {
-                Debug.LogWarning($"Sound '{sound}' not found!");
+                Debug.LogWarning($"Sound '{soundName}' not found!");
                 return;
             }
             s.source.Play();
         }
 
-        public void Stop(string sound)
+        public void Stop(SoundType soundType)
         {
-            Sound s = Array.Find(sounds, item => item.name == sound);
+            string soundName = soundType.ToString();
+            Sound s = Array.Find(sounds, item => item.name == soundName);
             if (s == null)
             {
-                Debug.LogWarning($"Sound '{sound}' not found!");
+                Debug.LogWarning($"Sound '{soundName}' not found!");
                 return;
             }
             s.source.Stop();
         }
 
-        public void FadeIn(string sound, float targetVolume, float duration)
+        public void FadeIn(SoundType soundType, float targetVolume, float duration)
         {
-            Sound s = Array.Find(sounds, item => item.name == sound);
+            string soundName = soundType.ToString();
+            Sound s = Array.Find(sounds, item => item.name == soundName);
             if (s == null)
             {
-                Debug.LogWarning($"Sound '{sound}' not found!");
+                Debug.LogWarning($"Sound '{soundName}' not found!");
                 return;
             }
 
@@ -71,12 +75,13 @@ namespace Code.Runtime.Gameplay.Logic.Sounds
             s.source.DOFade(targetVolume, duration).SetEase(Ease.Linear);
         }
 
-        public void FadeOut(string sound, float duration)
+        public void FadeOut(SoundType soundType, float duration)
         {
-            Sound s = Array.Find(sounds, item => item.name == sound);
+            string soundName = soundType.ToString();
+            Sound s = Array.Find(sounds, item => item.name == soundName);
             if (s == null)
             {
-                Debug.LogWarning($"Sound '{sound}' not found!");
+                Debug.LogWarning($"Sound '{soundName}' not found!");
                 return;
             }
 
