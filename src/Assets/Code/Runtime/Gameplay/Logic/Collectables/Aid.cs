@@ -1,11 +1,11 @@
-﻿using Code.Runtime.Gameplay.Logic.Sounds;
+﻿using Code.Runtime.Gameplay.Logic.PlayerFeatures;
+using Code.Runtime.Gameplay.Logic.Sounds;
 using Code.Runtime.Gameplay.View;
 using Code.Runtime.infrastructure.Service.Random;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
-namespace Code.Runtime.Gameplay.Logic
+namespace Code.Runtime.Gameplay.Logic.Collectables
 {
     public class Aid : MonoBehaviour, ICollectable
     {

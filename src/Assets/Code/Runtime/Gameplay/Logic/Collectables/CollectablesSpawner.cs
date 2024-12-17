@@ -4,11 +4,9 @@ using Code.Runtime.Extensions;
 using Code.Runtime.infrastructure.Service.Random;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
-using Random = UnityEngine.Random;
 
-namespace Code.Runtime.Gameplay.Logic
+namespace Code.Runtime.Gameplay.Logic.Collectables
 {
     public class CollectablesSpawner : MonoBehaviour
     {

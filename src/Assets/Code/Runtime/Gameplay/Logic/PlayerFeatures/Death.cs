@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Code.Runtime.Data;
 using Code.Runtime.Gameplay.Logic.Sounds;
 using Code.Runtime.infrastructure.Service.Input;
@@ -7,7 +6,7 @@ using Code.Runtime.infrastructure.Service.Windows;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Runtime.Gameplay.Logic
+namespace Code.Runtime.Gameplay.Logic.PlayerFeatures
 {
     public class Death : MonoBehaviour
     {

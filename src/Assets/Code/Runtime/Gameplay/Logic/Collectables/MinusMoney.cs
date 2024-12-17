@@ -6,7 +6,7 @@ using Code.Runtime.infrastructure.Service.SaveLoad;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Runtime.Gameplay.Logic
+namespace Code.Runtime.Gameplay.Logic.Collectables
 {
     public class MinusMoney : MoveFadeDestroyer, ICollectable
     {

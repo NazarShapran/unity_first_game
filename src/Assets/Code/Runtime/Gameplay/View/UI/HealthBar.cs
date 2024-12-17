@@ -1,5 +1,6 @@
 ﻿using System;
 using Code.Runtime.Gameplay.Logic;
+using Code.Runtime.Gameplay.Logic.PlayerFeatures;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;

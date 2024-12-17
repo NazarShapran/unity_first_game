@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Code.Runtime.Gameplay.Logic.Movements;
+using UnityEngine;
 
-namespace Code.Runtime.Gameplay.Logic
+namespace Code.Runtime.Gameplay.Logic.Jumps
 {
     public class JumpHandler: MonoBehaviour
     {

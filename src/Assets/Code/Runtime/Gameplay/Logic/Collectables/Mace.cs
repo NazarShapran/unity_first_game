@@ -1,7 +1,8 @@
-﻿using Code.Runtime.Gameplay.Logic.Sounds;
+﻿using Code.Runtime.Gameplay.Logic.PlayerFeatures;
+using Code.Runtime.Gameplay.Logic.Sounds;
 using UnityEngine;
 
-namespace Code.Runtime.Gameplay.Logic
+namespace Code.Runtime.Gameplay.Logic.Collectables
 {
     public class Mace : MonoBehaviour, ICollectable
     {

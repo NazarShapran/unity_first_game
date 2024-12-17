@@ -2,7 +2,7 @@ using Code.Runtime.infrastructure.Service.Input;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Runtime.Gameplay.Logic
+namespace Code.Runtime.Gameplay.Logic.Movements
 {
     public class PlayerInputX : MonoBehaviour
     {

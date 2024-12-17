@@ -2,7 +2,7 @@
 using Code.Runtime.infrastructure.Service.StaticData;
 using UnityEngine;
 
-namespace Code.Runtime.Gameplay.Logic
+namespace Code.Runtime.Gameplay.Logic.Jumps
 {
     public class JumpTypeManager
     {

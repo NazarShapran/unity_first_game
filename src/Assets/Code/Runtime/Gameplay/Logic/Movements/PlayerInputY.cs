@@ -1,10 +1,12 @@
 ﻿using Code.Runtime.Data;
+using Code.Runtime.Gameplay.Logic.Jumps;
+using Code.Runtime.Gameplay.Logic.PlayerFeatures;
 using Code.Runtime.infrastructure.Service.Input;
 using Code.Runtime.infrastructure.Service.StaticData;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Runtime.Gameplay.Logic
+namespace Code.Runtime.Gameplay.Logic.Movements
 {
     public class PlayerInputY : MonoBehaviour
     {
