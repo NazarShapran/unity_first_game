@@ -32,9 +32,9 @@ namespace Code.Runtime.Gameplay.Logic.Collectables
         }
         public void Collect(Collector collector)
         {
-            var coinsToMinus = (int)_randomService.Range(_minMinusCoins, _maxMinusCoins);
+            var coinsToMinus = _randomService.Range(_minMinusCoins, _maxMinusCoins);
             
-            _walletService.minusCoins(coinsToMinus);
+            _walletService.MinusCoins(coinsToMinus);
             _saveLoadService.SaveProgress();
             IsCollected = true;
 

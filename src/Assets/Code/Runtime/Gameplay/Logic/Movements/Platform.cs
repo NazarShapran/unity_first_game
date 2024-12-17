@@ -50,7 +50,7 @@ namespace Code.Runtime.Gameplay.Logic.Movements
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.gameObject.GetComponent<MovingPlatformAttachable>() == null)
+            if (other.gameObject.GetComponent<MoverX>() == null)
                 return;
 
             other.transform.SetParent(transform);
@@ -58,7 +58,7 @@ namespace Code.Runtime.Gameplay.Logic.Movements
 
         private void OnCollisionExit2D(Collision2D other)
         {
-            if (other.gameObject.GetComponent<MovingPlatformAttachable>() == null)
+            if (other.gameObject.GetComponent<MoverX>() == null)
                 return;
 
             other.transform.SetParent(null);

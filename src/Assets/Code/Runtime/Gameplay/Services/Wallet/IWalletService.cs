@@ -8,6 +8,6 @@ namespace Code.Runtime.Gameplay.Services.Wallet
         void AddCoin();
         bool IsEnoughMoney(int hatConfigPrice);
         void Purchase(int price);
-        void minusCoins(int coinsToMinus);
+        void MinusCoins(int coinsToMinus);
     }
 }

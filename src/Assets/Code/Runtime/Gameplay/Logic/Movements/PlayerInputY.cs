@@ -10,31 +10,23 @@ namespace Code.Runtime.Gameplay.Logic.Movements
 {
     public class PlayerInputY : MonoBehaviour
     {
-        [SerializeField]
-        private MoverY _mover;
+        [SerializeField] private MoverY _mover;
 
-        [SerializeField]
-        private JumpTypeId _jumpTypeId = JumpTypeId.None;
+        [SerializeField] private LayerMask _groundLayerMask;
+        
+        [SerializeField] private GroundChecker _groundChecker;
 
-        [SerializeField]
-        private LayerMask _groundLayerMask;
+        [SerializeField] private JumpHandler _jumpHandler;
         
         private IInputService _inputService;
-        
-        [SerializeField]
-        private GroundChecker _groundChecker;
-        
-        [SerializeField]
-        private JumpHandler _jumpHandler;
-        
-        private JumpTypeManager _jumpTypeManager;
+
+        private SetMaxJumpsCount _setMaxJumpsCount;
 
         [Inject]
         private void Construct(IInputService inputService, IStaticDataService staticDataService)
         {
             _inputService = inputService;
-            _jumpTypeManager = new JumpTypeManager(staticDataService);
-            Debug.Log("Player Input Initialized");
+            _setMaxJumpsCount = new SetMaxJumpsCount(staticDataService);
         }
 
         private void Update()
@@ -45,8 +37,6 @@ namespace Code.Runtime.Gameplay.Logic.Movements
                 {
                     _jumpHandler.ResetJumpCount();
                 }
-                
-                Debug.LogWarning($"Jump Type: {_jumpTypeId}");
 
                 if (_jumpHandler.CanJump())
                 {
@@ -57,8 +47,8 @@ namespace Code.Runtime.Gameplay.Logic.Movements
 
         public void SetJumpTypeId(JumpTypeId jumpTypeId)
         {
-            _jumpTypeManager.SetJumpTypeId(jumpTypeId);
-            _jumpHandler.SetMaxJumpCount(_jumpTypeManager.MaxJumpCount);
+            _setMaxJumpsCount.SetJumpTypeId(jumpTypeId);
+            _jumpHandler.SetMaxJumpCount(_setMaxJumpsCount.MaxJumpCount);
         }
     }
 }

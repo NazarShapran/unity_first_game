@@ -4,7 +4,7 @@ namespace Code.Runtime.infrastructure.Service.Random
 {
     public class RandomService : IRandomInterface 
     {
-        public float Range(float minInclusive, float maxInclusive) => 
+        public int Range(int minInclusive, int maxInclusive) => 
             UnityEngine.Random.Range(minInclusive, maxInclusive);
 
         public T ChooseFromList<T>(List<T> List)

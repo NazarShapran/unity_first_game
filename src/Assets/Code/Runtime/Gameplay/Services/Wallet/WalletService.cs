@@ -25,7 +25,7 @@ namespace Code.Runtime.Gameplay.Services.Wallet
             _balance -= price;
         }
 
-        public void minusCoins(int coinsToMinus)
+        public void MinusCoins(int coinsToMinus)
         {
             if (coinsToMinus < 0)
                 throw new InvalidOperationException($"Coins to steal have to be positive but was {coinsToMinus}");

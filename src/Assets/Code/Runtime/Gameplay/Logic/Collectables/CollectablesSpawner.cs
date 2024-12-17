@@ -17,7 +17,7 @@ namespace Code.Runtime.Gameplay.Logic.Collectables
         private List<GameObject> _collectables;
         
         [SerializeField]
-        private float _randomDetailX = 2;
+        private int _randomDetailX = 2;
 
         private IRandomInterface _random;
         private IInstantiator _instantiator;

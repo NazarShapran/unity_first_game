@@ -10,8 +10,8 @@ namespace Code.Runtime.Gameplay.Logic.Collectables
     public class Aid : MonoBehaviour, ICollectable
     {
         [SerializeField] private MoveFadeDestroyer _moveFadeDestroyer;
-        [SerializeField] private float _minHealthToHeal;
-        [SerializeField] private float _maxHealthToHeal;
+        [SerializeField] private int _minHealthToHeal;
+        [SerializeField] private int _maxHealthToHeal;
         [SerializeField] private Rigidbody2D _rigidbody2D;
         [SerializeField] private Collider2D _collider2D;
         

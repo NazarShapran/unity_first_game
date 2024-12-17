@@ -10,19 +10,15 @@ namespace Code.Runtime.Gameplay.Logic.PlayerFeatures
 {
     public class Death : MonoBehaviour
     {
-        [SerializeField] 
-        private Health _health;
+        [SerializeField] private Health _health;
 
         private IInputService _inputService;
-        [SerializeField]
-        private Rigidbody2D _rigidbody;
+        [SerializeField] private Rigidbody2D _rigidbody;
 
-        [SerializeField]
-        private float _feorceOnDeath;
+        [SerializeField] private float _feorceOnDeath;
 
-        [SerializeField]
-        private Collider2D _collaider;
-        
+        [SerializeField] private Collider2D _collaider;
+
         private readonly float _deathWindowPopUpTime = 2f;
 
         private IWindowService _windowService;
@@ -41,7 +37,7 @@ namespace Code.Runtime.Gameplay.Logic.PlayerFeatures
             _inputService = inputService;
             _windowService = windowService;
         }
-        
+
         private void Awake()
         {
             _health.Death += OnDeath;
@@ -61,7 +57,7 @@ namespace Code.Runtime.Gameplay.Logic.PlayerFeatures
             _collaider.enabled = false;
             StartCoroutine(OpenDeathWindowAfterDelay());
         }
-        
+
         private IEnumerator OpenDeathWindowAfterDelay()
         {
             yield return new WaitForSecondsRealtime(_deathWindowPopUpTime);

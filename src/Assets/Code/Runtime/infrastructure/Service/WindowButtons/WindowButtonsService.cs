@@ -16,11 +16,15 @@ namespace Code.Runtime.infrastructure.Service.WindowButtons
         private IInputService _inputService;
         private IWindowService _windowService;
 
-        public WindowButtonsService(ISceneLoader sceneLoader, ICleaningService cleaningService, IGameStateMachine gameStateMachine, IInputService inputService, IWindowService windowService)
+        public WindowButtonsService(
+            ISceneLoader sceneLoader,
+            ICleaningService cleaningService,
+            IGameStateMachine gameStateMachine,
+            IInputService inputService,
+            IWindowService windowService)
         {
             _inputService = inputService;
             _windowService = windowService;
-            
             _sceneLoader = sceneLoader;
             _cleaningService = cleaningService;
             _gameStateMachine = gameStateMachine;
@@ -45,8 +49,9 @@ namespace Code.Runtime.infrastructure.Service.WindowButtons
             _cleaningService.CleanLevel();
             _windowService.CloseWindow();
             _sceneLoader.LoadScene(levelName);
-            _gameStateMachine.Enter<LoadLevelState, string>("Level");        
+            _gameStateMachine.Enter<LoadLevelState, string>("Level");
         }
+
         public void PressResumeButton()
         {
             _windowService.CloseWindow();
@@ -54,4 +59,3 @@ namespace Code.Runtime.infrastructure.Service.WindowButtons
         }
     }
 }
-

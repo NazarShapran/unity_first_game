@@ -11,12 +11,12 @@ namespace Code.Runtime.infrastructure.Service.Windows
         private IStaticDataService _staticDataService;
         private IInstantiator _instantiator;
         private ITimeService _timeService;
-        
-        private GameObject _openedWindowPrefab = null;
-        private Vector3 WindowInitialPos = new Vector3(0, 0, 0);
-        
+        private GameObject _currentWindow;
+        private Vector3 DefaultWindowPosition = Vector3.zero;
+
         [Inject]
-        private void Construct(IInstantiator instantiator, IStaticDataService staticDataService, ITimeService timeService)
+        private void Construct(IInstantiator instantiator, IStaticDataService staticDataService,
+            ITimeService timeService)
         {
             _instantiator = instantiator;
             _staticDataService = staticDataService;
@@ -25,21 +25,34 @@ namespace Code.Runtime.infrastructure.Service.Windows
 
         public void OpenWindow(WindowTypeId windowTypeId)
         {
+            CloseWindow();
+
             _timeService.Stop();
-            GameObject toSpawn = _staticDataService.GetWindowConfig(windowTypeId).WindowPrefab;
-            if (toSpawn == null)
+
+            var config = _staticDataService.GetWindowConfig(windowTypeId);
+            if (config?.WindowPrefab == null)
             {
-                Debug.LogWarning("No prefab found for " + windowTypeId);
+                Debug.LogWarning($"WindowConfig for '{windowTypeId}' not found or prefab is null.");
                 return;
             }
 
-            _openedWindowPrefab = _instantiator.InstantiatePrefab(toSpawn, WindowInitialPos, Quaternion.identity, null);
+            _currentWindow = _instantiator
+                .InstantiatePrefab(
+                    config.WindowPrefab,
+                    DefaultWindowPosition,
+                    Quaternion.identity,
+                    null);
         }
+
         public void CloseWindow()
         {
+            if (_currentWindow != null)
+            {
+                Object.Destroy(_currentWindow);
+                _currentWindow = null;
+            }
+
             _timeService.Resume();
-            if(_openedWindowPrefab != null)
-                Object.Destroy(_openedWindowPrefab);
         }
     }
 }
