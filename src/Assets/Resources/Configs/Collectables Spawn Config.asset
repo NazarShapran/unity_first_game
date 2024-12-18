@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb484acb297a4564adf65d476a15baa8, type: 3}
+  m_Name: Collectables Spawn Config
+  m_EditorClassIdentifier: 
+  Collectables:
+  - CollectablePrefab: {fileID: 5958622928747213118, guid: 4898aa747c57d844fa654c6f4f8f4eee, type: 3}
+    Weight: 50
+  - CollectablePrefab: {fileID: 5731445114668721732, guid: 0bfa131ca4578784fa370fde89c36074, type: 3}
+    Weight: 50
+  - CollectablePrefab: {fileID: 6119050839715270894, guid: f9b0e22012f9ec74a977285dc2ef4b61, type: 3}
+    Weight: 20
+  - CollectablePrefab: {fileID: 4921284850995579255, guid: d963d52e11a0fcf4fbbd811bc764a330, type: 3}
+    Weight: 30

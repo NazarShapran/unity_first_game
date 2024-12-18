@@ -49,9 +49,10 @@ namespace Code.Runtime.infrastructure
 
         private void BindAudioManager()
         {
-            // Container.Bind<IAudioManager>().To<AudioManager>().FromComponentInNewPrefabResource("AudioManager")
-            //     .AsSingle();
             Container.Bind<IAudioManager>().To<AudioManager>().AsSingle();
+
+            var audioManager = Container.Resolve<IAudioManager>() as AudioManager;
+            audioManager?.Initialize();
         }
 
         private void BindGameStates()

@@ -10,12 +10,16 @@ namespace Code.Runtime.Gameplay.Logic.Sounds
     public class AudioManager : IAudioManager
     {
         private readonly IStaticDataService _staticDataService;
-        private readonly GameObject _audioRoot;
+        private GameObject _audioRoot;
         private readonly Dictionary<SoundType, AudioSource> _audioSources = new();
 
         public AudioManager(IStaticDataService staticDataService)
         {
             _staticDataService = staticDataService;
+        }
+
+        public void Initialize()
+        {
             _audioRoot = new GameObject("AudioManager");
             UnityEngine.Object.DontDestroyOnLoad(_audioRoot);
         }
@@ -64,7 +68,7 @@ namespace Code.Runtime.Gameplay.Logic.Sounds
                 audioSource.volume = 0f;
                 audioSource.Play();
             }
-            
+
             audioSource.DOFade(targetVolume, duration).SetEase(Ease.Linear);
         }
 
