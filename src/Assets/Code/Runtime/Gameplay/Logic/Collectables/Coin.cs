@@ -21,11 +21,11 @@ namespace Code.Runtime.Gameplay.Logic.Collectables
         
         private IWalletService _walletService;
         private ISaveLoadService _saveLoadService;
-        private AudioManager _audioManager;
+        private IAudioManager _audioManager;
         public bool IsCollected { get; private set; }
 
         [Inject]
-        private void Construct(IWalletService walletService, ISaveLoadService saveLoadService, AudioManager audioManager)
+        private void Construct(IWalletService walletService, ISaveLoadService saveLoadService, IAudioManager audioManager)
         {
             _walletService = walletService;
             _saveLoadService = saveLoadService;

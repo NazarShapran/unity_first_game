@@ -46,20 +46,19 @@ namespace Code.Runtime.infrastructure
         {
             Container.Bind<IGameFactory>().To<GameFactory>().AsSingle();
         }
-        
+
         private void BindAudioManager()
         {
-            GameObject audioManagerObject = GameObject.Find("AudioManager");
-            AudioManager audioManager = audioManagerObject.GetComponent<AudioManager>();
-
-            Container.Bind<AudioManager>().FromInstance(audioManager).AsSingle();
+            // Container.Bind<IAudioManager>().To<AudioManager>().FromComponentInNewPrefabResource("AudioManager")
+            //     .AsSingle();
+            Container.Bind<IAudioManager>().To<AudioManager>().AsSingle();
         }
 
         private void BindGameStates()
         {
             Container.Bind<IStateProvider>().To<StateProvider>().AsSingle();
             Container.Bind<IGameStateMachine>().To<GameStateMachine>().AsSingle();
-            
+
             Container.BindInterfacesAndSelfTo<BootstrapState>().AsSingle();
             Container.BindInterfacesAndSelfTo<LoadProgressState>().AsSingle();
             Container.BindInterfacesAndSelfTo<LoadLevelState>().AsSingle();
@@ -76,7 +75,7 @@ namespace Code.Runtime.infrastructure
             Container.Bind<IProgressService>().To<ProgressService>().AsSingle();
             Container.Bind<ISaveLoadService>().To<SaveLoadService>().AsSingle();
             Container.Bind<ISaveLoadRegistryService>().To<SaveLoadRegistryService>().AsSingle();
-            
+
             Container.Bind<ICleaningService>().To<CleaningService>().AsSingle();
             Container.Bind<ITimeService>().To<TimeService>().AsSingle();
             Container.Bind<IWindowService>().To<WindowService>().AsSingle();

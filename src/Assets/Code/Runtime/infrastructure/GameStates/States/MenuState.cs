@@ -2,6 +2,7 @@
 using Code.Runtime.Gameplay.Logic.Sounds;
 using Code.Runtime.infrastructure.GameStates.Api;
 using Code.Runtime.infrastructure.Service.Scene;
+using Zenject;
 
 namespace Code.Runtime.infrastructure.GameStates.States
 {
@@ -9,12 +10,16 @@ namespace Code.Runtime.infrastructure.GameStates.States
     {
         private const string MenuSceneName = "Menu";
         private readonly ISceneLoader _sceneLoader;
-        private AudioManager _audioManager;
+        private IAudioManager _audioManager;
+        [Inject]
+        private void Construct(IAudioManager audioManager)
+        {
+            _audioManager = audioManager;
+        }
 
-        public MenuState(ISceneLoader sceneLoader, AudioManager audioManager)
+        public MenuState(ISceneLoader sceneLoader)
         {
             _sceneLoader = sceneLoader;
-            _audioManager = audioManager;
         }
 
         public void Enter()

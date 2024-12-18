@@ -1,94 +1,97 @@
-﻿using UnityEngine;
-using UnityEngine.Audio;
-using DG.Tweening;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using Code.Runtime.Data;
+using Code.Runtime.infrastructure.Service.StaticData;
+using UnityEngine;
+using DG.Tweening;
 
 namespace Code.Runtime.Gameplay.Logic.Sounds
 {
-    public class AudioManager : MonoBehaviour
+    public class AudioManager : IAudioManager
     {
-        public AudioManager instance;
+        private readonly IStaticDataService _staticDataService;
+        private readonly GameObject _audioRoot;
+        private readonly Dictionary<SoundType, AudioSource> _audioSources = new();
 
-        public Sound[] sounds;
-
-        void Awake()
+        public AudioManager(IStaticDataService staticDataService)
         {
-            if (instance != null)
-            {
-                Destroy(gameObject);
-                return;
-            }
-            else
-            {
-                instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
-
-            foreach (Sound s in sounds)
-            {
-                s.source = gameObject.AddComponent<AudioSource>();
-                s.source.clip = s.clip;
-                s.source.volume = s.volume;
-                s.source.pitch = s.pitch;
-                s.source.loop = s.loop;
-                s.source.outputAudioMixerGroup = s.mixer;
-            }
+            _staticDataService = staticDataService;
+            _audioRoot = new GameObject("AudioManager");
+            UnityEngine.Object.DontDestroyOnLoad(_audioRoot);
         }
 
         public void Play(SoundType soundType)
         {
-            string soundName = soundType.ToString();
-            Sound s = Array.Find(sounds, item => item.name == soundName);
-            if (s == null)
+            if (!TryGetAudioSource(soundType, out var audioSource))
             {
-                Debug.LogWarning($"Sound '{soundName}' not found!");
-                return;
+                var soundConfig = _staticDataService.GetSoundConfig(soundType);
+                if (soundConfig == null || soundConfig.Sounds == null)
+                {
+                    Debug.LogWarning($"SoundConfig not found for soundType: {soundType}");
+                    return;
+                }
+
+                audioSource = CreateAndAddAudioSource(soundType, soundConfig.Sounds);
             }
-            s.source.Play();
+
+            audioSource.Play();
         }
 
         public void Stop(SoundType soundType)
         {
-            string soundName = soundType.ToString();
-            Sound s = Array.Find(sounds, item => item.name == soundName);
-            if (s == null)
+            if (TryGetAudioSource(soundType, out var audioSource) && audioSource.isPlaying)
             {
-                Debug.LogWarning($"Sound '{soundName}' not found!");
-                return;
+                audioSource.Stop();
             }
-            s.source.Stop();
         }
 
         public void FadeIn(SoundType soundType, float targetVolume, float duration)
         {
-            string soundName = soundType.ToString();
-            Sound s = Array.Find(sounds, item => item.name == soundName);
-            if (s == null)
+            if (!TryGetAudioSource(soundType, out var audioSource))
             {
-                Debug.LogWarning($"Sound '{soundName}' not found!");
-                return;
+                var soundConfig = _staticDataService.GetSoundConfig(soundType);
+                if (soundConfig == null || soundConfig.Sounds == null)
+                {
+                    Debug.LogWarning($"SoundConfig not found for soundType: {soundType}");
+                    return;
+                }
+
+                audioSource = CreateAndAddAudioSource(soundType, soundConfig.Sounds);
             }
 
-            s.source.volume = 0f;
-            s.source.Play();
-            s.source.DOFade(targetVolume, duration).SetEase(Ease.Linear);
+            if (!audioSource.isPlaying)
+            {
+                audioSource.volume = 0f;
+                audioSource.Play();
+            }
+            
+            audioSource.DOFade(targetVolume, duration).SetEase(Ease.Linear);
         }
 
         public void FadeOut(SoundType soundType, float duration)
         {
-            string soundName = soundType.ToString();
-            Sound s = Array.Find(sounds, item => item.name == soundName);
-            if (s == null)
+            if (TryGetAudioSource(soundType, out var audioSource) && audioSource.isPlaying)
             {
-                Debug.LogWarning($"Sound '{soundName}' not found!");
-                return;
+                audioSource.DOFade(0f, duration).SetEase(Ease.Linear).OnComplete(audioSource.Stop);
             }
+        }
 
-            s.source.DOFade(0f, duration).SetEase(Ease.Linear).OnComplete(() =>
-            {
-                s.source.Stop();
-            });
+        private bool TryGetAudioSource(SoundType soundType, out AudioSource audioSource)
+        {
+            return _audioSources.TryGetValue(soundType, out audioSource);
+        }
+
+        private AudioSource CreateAndAddAudioSource(SoundType soundType, Sound sound)
+        {
+            var audioSource = _audioRoot.AddComponent<AudioSource>();
+            audioSource.clip = sound.clip;
+            audioSource.volume = sound.volume;
+            audioSource.pitch = sound.pitch;
+            audioSource.loop = sound.loop;
+            audioSource.outputAudioMixerGroup = sound.mixer;
+
+            _audioSources[soundType] = audioSource;
+            return audioSource;
         }
     }
 }

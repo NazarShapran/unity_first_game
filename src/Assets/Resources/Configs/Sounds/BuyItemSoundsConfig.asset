@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e8ede1affbc434d8715b33cdcfcd916, type: 3}
+  m_Name: BuyItemSoundsConfig
+  m_EditorClassIdentifier: 
+  Sound: 8
+  Sounds:
+    name: 8
+    clip: {fileID: 8300000, guid: 89ae9828e2f8913779b44d7d553bad9a, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.241
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

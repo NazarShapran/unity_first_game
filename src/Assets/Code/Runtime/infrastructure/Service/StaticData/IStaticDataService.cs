@@ -10,6 +10,7 @@ namespace Code.Runtime.infrastructure.Service.StaticData
         HudConfig HUDConfig { get; }
         PlayerConfig PlayerConfig { get; }
         WindowConfig WindowConfig { get; }
+        SoundsConfig SoundsConfig { get; }
         void LoadAll();
         LevelData GetLevelData(string levelName);
         ShopItemConfig GetShopItemConfig(ShopItemId hatTypeId);
@@ -17,5 +18,6 @@ namespace Code.Runtime.infrastructure.Service.StaticData
         HatConfig GetHatConfig(HatTypeId hatTypeId);
         WindowConfig GetWindowConfig(WindowTypeId windowTypeId);
         JumpConfig GetJumpConfig(JumpTypeId jumpTypeId);
+        SoundsConfig GetSoundConfig(SoundType soundType);
     }
 }

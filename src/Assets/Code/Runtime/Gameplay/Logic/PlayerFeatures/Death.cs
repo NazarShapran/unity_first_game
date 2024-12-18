@@ -21,7 +21,7 @@ namespace Code.Runtime.Gameplay.Logic.PlayerFeatures
         private readonly float _deathWindowPopUpTime = 2f;
         private IInputService _inputService;
         private IWindowService _windowService;
-        private AudioManager _audioManager;
+        private IAudioManager _audioManager;
 
 
         private void OnValidate()
@@ -32,7 +32,7 @@ namespace Code.Runtime.Gameplay.Logic.PlayerFeatures
         }
 
         [Inject]
-        private void Construct(IInputService inputService, IWindowService windowService, AudioManager audioManager)
+        private void Construct(IInputService inputService, IWindowService windowService, IAudioManager audioManager)
         {
             _inputService = inputService;
             _windowService = windowService;

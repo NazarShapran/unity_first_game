@@ -18,7 +18,7 @@ namespace Code.Runtime.Gameplay.Logic.Collectables
         private IWalletService _walletService;
         private ISaveLoadService _saveLoadService;
         private IRandomInterface _randomService;
-        private AudioManager _audioManager;
+        private IAudioManager _audioManager;
         
         [SerializeField] private int _minMinusCoins;
         [SerializeField] private int _maxMinusCoins;
@@ -26,7 +26,7 @@ namespace Code.Runtime.Gameplay.Logic.Collectables
         public bool IsCollected { get; private set; }
         
         [Inject]
-        private void Construct(IWalletService walletService, ISaveLoadService saveLoadService, IRandomInterface randomService, AudioManager audioManager)
+        private void Construct(IWalletService walletService, ISaveLoadService saveLoadService, IRandomInterface randomService, IAudioManager audioManager)
         {
             _walletService = walletService;
             _saveLoadService = saveLoadService;

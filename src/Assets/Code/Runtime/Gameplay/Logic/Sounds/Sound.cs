@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Code.Runtime.Data;
+using UnityEngine;
 using UnityEngine.Audio;
 
 namespace Code.Runtime.Gameplay.Logic.Sounds
@@ -6,7 +7,7 @@ namespace Code.Runtime.Gameplay.Logic.Sounds
     [System.Serializable]
     public class Sound
     {
-        public string name;
+        //public SoundType name;
 
         public AudioClip clip;
         public AudioMixerGroup mixer;
@@ -22,4 +23,4 @@ namespace Code.Runtime.Gameplay.Logic.Sounds
         [HideInInspector]
         public AudioSource source;
     }
-}
+}  

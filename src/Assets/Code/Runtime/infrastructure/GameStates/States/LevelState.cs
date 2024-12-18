@@ -4,6 +4,7 @@ using Code.Runtime.infrastructure.GameStates.Api;
 using Code.Runtime.infrastructure.Service.Input;
 using Code.Runtime.infrastructure.Service.StaticData;
 using UnityEngine;
+using Zenject;
 
 namespace Code.Runtime.infrastructure.GameStates.States
 {
@@ -11,20 +12,16 @@ namespace Code.Runtime.infrastructure.GameStates.States
     {
         private IInputService _inputService;
         private readonly IStaticDataService _staticDataService;
-        private AudioManager _audioManager;
 
-        public LevelState(IInputService inputService, IStaticDataService staticDataService, AudioManager audioManager)
+        public LevelState(IInputService inputService, IStaticDataService staticDataService)
         {
             _inputService = inputService;
             _staticDataService = staticDataService;
-            _audioManager = audioManager;
         }
 
         public void Enter()
         {
             _inputService.Enable();
-            _audioManager.FadeOut(SoundType.Menu, 1.5f);
-            _audioManager.FadeIn(SoundType.Level, 0.1f, 2f);
             Debug.Log($"Start level with health config: {_staticDataService.PlayerConfig.StartHealth}");
         }
 

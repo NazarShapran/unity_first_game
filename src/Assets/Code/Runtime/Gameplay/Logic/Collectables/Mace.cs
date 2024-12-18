@@ -11,10 +11,10 @@ namespace Code.Runtime.Gameplay.Logic.Collectables
         [SerializeField]
         private float _healthToSubstract;
         
-        private AudioManager _audioManager;
+        private IAudioManager _audioManager;
         
         [Inject]
-        private void Construct(AudioManager audioManager)
+        private void Construct(IAudioManager audioManager)
         {
             _audioManager = audioManager;
         }

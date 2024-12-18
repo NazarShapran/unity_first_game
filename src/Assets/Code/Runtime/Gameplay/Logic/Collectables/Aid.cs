@@ -17,10 +17,10 @@ namespace Code.Runtime.Gameplay.Logic.Collectables
         [SerializeField] private Collider2D _collider2D;
         
         private IRandomInterface _randomService;
-        private AudioManager _audioManager;
+        private IAudioManager _audioManager;
         
         [Inject]
-        private void Construct(IRandomInterface randomService, AudioManager audioManager)
+        private void Construct(IRandomInterface randomService, IAudioManager audioManager)
         {
             _randomService = randomService;
             _audioManager = audioManager;

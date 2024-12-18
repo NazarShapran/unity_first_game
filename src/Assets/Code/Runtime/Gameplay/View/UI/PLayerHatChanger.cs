@@ -20,11 +20,11 @@ namespace Code.Runtime.Gameplay.View.UI
 
         private IPlayerInventoryService _invenrtoryService;
         private IStaticDataService _staticDataService;
-        private AudioManager _audioManager;
+        private IAudioManager _audioManager;
 
 
         [Inject]
-        private void Construct(IPlayerInventoryService playerInventoryService, IStaticDataService staticDataService, AudioManager audioManager)
+        private void Construct(IPlayerInventoryService playerInventoryService, IStaticDataService staticDataService, IAudioManager audioManager)
         {
             _invenrtoryService = playerInventoryService;
             _staticDataService = staticDataService;

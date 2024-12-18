@@ -20,14 +20,14 @@ namespace Code.Runtime.Gameplay.View.UI.Shop
         [SerializeField]
         private Button _buyButton;
         
-        private AudioManager _audioManager;
+        private IAudioManager _audioManager;
         private IShopService _shopService;
         private ShopItemId _shopTypeId;
         
         public ShopItemId ShopTypeId => _shopTypeId;
         
         [Inject]
-        private void Construct(AudioManager audioManager)
+        private void Construct(IAudioManager audioManager)
         {
             _audioManager = audioManager;
         }

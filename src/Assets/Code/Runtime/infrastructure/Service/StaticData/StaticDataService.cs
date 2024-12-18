@@ -14,9 +14,11 @@ namespace Code.Runtime.infrastructure.Service.StaticData
         private Dictionary<HatTypeId, HatConfig> _hats;
         private Dictionary<WindowTypeId, WindowConfig> _windows;
         private Dictionary<JumpTypeId, JumpConfig> _jumps;
+        private Dictionary<SoundType, SoundsConfig> _sounds;
         public HudConfig HUDConfig { get; private set; }
         public PlayerConfig PlayerConfig { get; private set; }
         public WindowConfig WindowConfig { get; private set; }
+        public SoundsConfig SoundsConfig { get; private set; }
 
         public void LoadAll()
         {
@@ -27,9 +29,9 @@ namespace Code.Runtime.infrastructure.Service.StaticData
             LoadHatConfigs();
             LoadWindows();
             LoadJumpConfigs();
+            LoadSoundsConfig();
         }
-
-
+        
         public JumpConfig GetJumpConfig(JumpTypeId jumpTypeId)
             => _jumps.GetValueOrDefault(jumpTypeId);
         public HatConfig GetHatConfig(HatTypeId hatTypeId) =>
@@ -51,8 +53,16 @@ namespace Code.Runtime.infrastructure.Service.StaticData
 
         public IEnumerable<ShopItemConfig> GetHatsConfigs() =>
             _shopItems.Values;
+        
+        public SoundsConfig GetSoundConfig(SoundType soundType) 
+            => _sounds.GetValueOrDefault(soundType);
 
-
+        private void LoadSoundsConfig()
+        {
+            _sounds = Resources
+                .LoadAll<SoundsConfig>("Configs/Sounds")
+                .ToDictionary(x => x.Sound);
+        }
         private void LoadShopItems()
         {
             _shopItems = Resources

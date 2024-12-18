@@ -15,10 +15,10 @@ namespace Code.Runtime.Gameplay.View.UI
         private Button _button;
 
         private IGameStateMachine _gameStateMachine;
-        private AudioManager _audioManager;
+        private IAudioManager _audioManager;
         
         [Inject]
-        private void Construct(IGameStateMachine gameStateMachine, AudioManager audioManager)
+        private void Construct(IGameStateMachine gameStateMachine, IAudioManager audioManager)
         {
             _gameStateMachine = gameStateMachine;
             _audioManager = audioManager;
@@ -36,6 +36,8 @@ namespace Code.Runtime.Gameplay.View.UI
         private void OnButtonClick()
         {
             _audioManager.Play(SoundType.InterfaceButtons);
+            _audioManager.FadeOut(SoundType.Menu, 1.5f);
+            _audioManager.FadeIn(SoundType.Level, 0.1f, 2f);
             _gameStateMachine.Enter<LoadLevelState, string>("Level");
         }
     }

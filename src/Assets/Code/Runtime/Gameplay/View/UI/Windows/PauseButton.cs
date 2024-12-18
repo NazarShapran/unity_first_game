@@ -9,10 +9,10 @@ namespace Code.Runtime.Gameplay.View.UI.Windows
     public class PauseButton : MonoBehaviour
     {
         private IWindowButtonsService _windowButtonsService;
-        private AudioManager _audioManager;
+        private IAudioManager _audioManager;
 
         [Inject]
-        private void Construct(IWindowButtonsService windowButtonsService, AudioManager audioManager)
+        private void Construct(IWindowButtonsService windowButtonsService, IAudioManager audioManager)
         {
             _windowButtonsService = windowButtonsService;
             _audioManager = audioManager;
