@@ -7,5 +7,6 @@ namespace Code.Runtime.infrastructure.Service.Random
     {
         int Range(int minInclusive, int maxInclusive);
         T ChooseFromList<T>(List<T> List);
+        T ChooseWeighted<T>(List<(T Item, int Weight)> items);
     }
 }

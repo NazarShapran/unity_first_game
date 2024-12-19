@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Collectables:
   - CollectablePrefab: {fileID: 5958622928747213118, guid: 4898aa747c57d844fa654c6f4f8f4eee, type: 3}
-    Weight: 50
+    Weight: 38
   - CollectablePrefab: {fileID: 5731445114668721732, guid: 0bfa131ca4578784fa370fde89c36074, type: 3}
-    Weight: 50
+    Weight: 46
   - CollectablePrefab: {fileID: 6119050839715270894, guid: f9b0e22012f9ec74a977285dc2ef4b61, type: 3}
-    Weight: 20
+    Weight: 17
   - CollectablePrefab: {fileID: 4921284850995579255, guid: d963d52e11a0fcf4fbbd811bc764a330, type: 3}
     Weight: 30

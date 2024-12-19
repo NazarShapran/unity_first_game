@@ -12,8 +12,7 @@ namespace Code.Runtime.Gameplay.Logic.Collectables
     public class CollectablesSpawner : MonoBehaviour
     {
         [SerializeField] private float _spawnInterval;
-        [SerializeField] private CollectablesSpawnConfig _config; // Підключаємо конфіг
-
+        [SerializeField] private CollectablesSpawnConfig _config; 
         [SerializeField] private int _randomDetailX = 2;
 
         private IRandomInterface _random;
@@ -45,26 +44,23 @@ namespace Code.Runtime.Gameplay.Logic.Collectables
                 return;
             }
 
-            GameObject toSpawn = GetRandomCollectable();
-            _instantiator.InstantiatePrefab(toSpawn, transform.position.SetX(GetRandomX()),quaternion.identity, gameObject.transform);
-        }
+            var weightedItems = _config.Collectables
+                .Select(item => (item.CollectablePrefab, item.Weight))
+                .ToList();
 
+            GameObject toSpawn = _random.ChooseWeighted(weightedItems);
 
-        private GameObject GetRandomCollectable()
-        {
-            int totalWeight = _config.Collectables.Sum(item => item.Weight);
-            int randomPoint = _random.Range(0, totalWeight);
-            int currentWeight = 0;
-
-            foreach (var collectable in _config.Collectables)
+            if (toSpawn != null)
             {
-                currentWeight += collectable.Weight;
-                if (randomPoint <= currentWeight)
-                    return collectable.CollectablePrefab;
+                _instantiator.InstantiatePrefab(
+                    toSpawn,
+                    transform.position.SetX(GetRandomX()),
+                    quaternion.identity,
+                    gameObject.transform
+                );
             }
-
-            return _config.Collectables[0].CollectablePrefab;
         }
+
         private float GetRandomX() => _random.Range(-_randomDetailX, _randomDetailX);
     }
 }
